@@ -28,6 +28,12 @@ Things you may want to cover:
 # アプリケーション名
 equipment_cost
 
+# アプリケーション概要
+このオリジナルアプリは、社内の化学分析機器管理者が他部署の社員がレンタル利用した機器の利用履歴、利用料金を一覧表示するアプリです。
+
+
+
+
 ## users テーブル
 
 | Column             | Type   | Options                   |
