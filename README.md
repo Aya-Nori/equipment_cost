@@ -22,3 +22,28 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+
+# アプリケーション名
+equipment_cost
+
+## users テーブル
+
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| name_sei           | string | null: false               |
+| name_mei           | string | null: false               |
+| name_sei_kana      | string | null: false               |
+| name_mei_kana      | string | null: false               |
+| birth              | date   | null: false               |
+
+### Association
+
+- has_many :comments
+- has_many :items
+- has_many :purchases
+
