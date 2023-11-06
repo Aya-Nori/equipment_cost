@@ -32,24 +32,38 @@ equipment_cost
 このオリジナルアプリは、社内の化学分析機器管理者が他部署の社員がレンタル利用した機器の利用履歴、利用料金を一覧表示するアプリです。
 
 
-
-
 ## users テーブル
 
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ------------------------- |
-| nickname           | string | null: false               |
-| email              | string | null: false, unique: true |
-| encrypted_password | string | null: false               |
 | name_sei           | string | null: false               |
 | name_mei           | string | null: false               |
-| name_sei_kana      | string | null: false               |
-| name_mei_kana      | string | null: false               |
-| birth              | date   | null: false               |
+| encrypted_password | string | null: false               |
+| extention_number   | string | null: false               |
+| division           | string | null: false               |
+| section            | string | null: false               |
 
 ### Association
 
-- has_many :comments
-- has_many :items
-- has_many :purchases
+
+## equipments テーブル
+
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| equipment_name     | string | null: false               |
+| start_time         | string | null: false               |
+| finish_time        | string | null: false               |
+| category           | string | null: false               |
+
+### Association
+
+## comments テーブル
+
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| text               | text   | null: false               |
+
+### Association
+
+
 
