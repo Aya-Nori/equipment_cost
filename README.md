@@ -61,7 +61,29 @@ Basic認証ID：
 # 洗い出した要件
 要件定義シート(https://docs.google.com/spreadsheets/d/1oNb8WVjL6M_sqWyX-SC9J8pBhpzQSUtyNNE9ASdcXB0/edit?usp=drive_link)
 
+# 実装した機能についての説明
 
+# 実装予定の機能
+
+# データベース設計
+
+# 画面遷移図
+
+# 環境開発
+フロントエンド
+バックエンド
+インフラ
+テスト
+テキストエディタ
+タスク管理
+
+# ローカルでの動作方法
+
+
+# 工夫したポイント
+
+
+# テーブル設計
 ## users テーブル
 
 | Column             | Type   | Options                   |
