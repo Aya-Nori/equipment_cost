@@ -74,7 +74,10 @@ equipment_cost
 # データベース設計
 [![Image from Gyazo](https://i.gyazo.com/18d4ca4abf32c4f47f0a22e528612564.png)](https://gyazo.com/18d4ca4abf32c4f47f0a22e528612564)
 
+
 # 画面遷移図
+
+[![Image from Gyazo](https://i.gyazo.com/e9e1a529aa5a310b397a5a6c45843ac0.png)](https://gyazo.com/e9e1a529aa5a310b397a5a6c45843ac0)
 
 
 # 環境開発
@@ -86,6 +89,12 @@ equipment_cost
 - タスク管理
 
 # ローカルでの動作方法
+
+以下のコマンドを順に実行する。
+% git clone https://github.com/Aya-Nori/equipment_cost
+% cd equipment_cost
+% bundle install
+% yarn install
 
 
 # 工夫したポイント
@@ -105,6 +114,8 @@ equipment_cost
 
 ### Association
 
+has_many : equipments
+has_many : comments
 
 
 ## equipments テーブル
@@ -118,6 +129,10 @@ equipment_cost
 
 ### Association
 
+has_many : comments
+belongs_to : user
+
+
 ## comments テーブル
 
 | Column             | Type   | Options                   |
@@ -126,5 +141,7 @@ equipment_cost
 
 ### Association
 
+belongs_to : user
+belongs_to : equipment
 
 
