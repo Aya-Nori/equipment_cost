@@ -90,11 +90,11 @@ equipment_cost
 
 # ローカルでの動作方法
 
-以下のコマンドを順に実行する。
-% git clone https://github.com/Aya-Nori/equipment_cost
-% cd equipment_cost
-% bundle install
-% yarn install
+- 以下のコマンドを順に実行する。
+- % git clone https://github.com/Aya-Nori/equipment_cost
+- % cd equipment_cost
+- % bundle install
+- % yarn install
 
 
 # 工夫したポイント
