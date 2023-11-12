@@ -72,7 +72,7 @@ equipment_cost
 - 料金管理
 
 # データベース設計
-
+[![Image from Gyazo](https://i.gyazo.com/18d4ca4abf32c4f47f0a22e528612564.png)](https://gyazo.com/18d4ca4abf32c4f47f0a22e528612564)
 
 # 画面遷移図
 
@@ -104,6 +104,7 @@ equipment_cost
 | section            | string | null: false               |
 
 ### Association
+
 
 
 ## equipments テーブル
