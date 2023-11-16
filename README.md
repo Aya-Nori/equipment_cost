@@ -33,7 +33,7 @@ equipment_cost
 
 # URL
 
-リンク先(http://00.00.000.000)
+リンク先(https://equipmentcost.onrender.com/)
 
 # テスト用アカウント
 
