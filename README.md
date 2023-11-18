@@ -124,8 +124,8 @@ has_many : comments
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ------------------------- |
 | equipment_name     | string | null: false               |
-| start_time         | date   | null: false               |
-| finish_time        | date   | null: false               |
+| start_time         | date   |                           |
+| finish_time        | date   |                           |
 | category           | string | null: false               |
 
 ### Association
