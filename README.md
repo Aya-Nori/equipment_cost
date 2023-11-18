@@ -107,6 +107,7 @@ equipment_cost
 | ------------------ | ------- | ------------------------- |
 | name_sei           | string  | null: false               |
 | name_mei           | string  | null: false               |
+| email              | string  | null: false, unique: true |
 | encrypted_password | string  | null: false               |
 | extention_number   | integer | null: false               |
 | division           | string  | null: false               |

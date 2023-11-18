@@ -5,6 +5,31 @@
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="field">
+        <%= f.label :name_sei, "名字" %><br />
+        <%= f.text_field :name_sei %>
+      </div>
+
+      <div class="field">
+        <%= f.label :name_mei, "名前" %><br />
+        <%= f.text_field :name_mei %>
+      </div>
+
+      <div class="field">
+        <%= f.label :extention_number, "内線番号" %><br />
+        <%= f.text_field :extention_number %>
+      </div>
+
+      <div class="field">
+        <%= f.label :division, "部署" %><br />
+        <%= f.text_field :division %>
+      </div>
+
+      <div class="field">
+        <%= f.label :section, "グループ名" %><br />
+        <%= f.text_field :section %>
+      </div>
+
+      <div class="field">
         <%= f.label :email %><br />
         <%= f.email_field :email %>
       </div>
