@@ -2,13 +2,13 @@
   box-sizing: border-box;
 }
 
-.top-page-header {
+.page-main {
   width: 100vw;
   padding: 2vh 15vw;
   display: flex;
 }
 
-.nav {
+.main_nav {
   font-size: 18px;
   display: flex;
   justify-content: space-around;
@@ -17,33 +17,16 @@
   padding: 1vh 0;
 }
 
-.lists {
+.main_area {
   display: flex;
   justify-content: space-around;
   list-style: none;
   align-items: flex-end;
 }
 
-.user-name {
-  text-decoration: none;
-  margin-right: 3vw;
-  color: #333333;
-  font-weight: bold;
-}
-
-.logout {
-  text-decoration: none;
-  color: #333333;
-}
-
-.login {
+.text {
   text-decoration: none;
   line-height: 32px;
   margin-right: 3vw;
-  color: #333333;
-}
-
-.sign-up {
-  text-decoration: none;
   color: #333333;
 }
