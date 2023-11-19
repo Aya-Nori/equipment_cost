@@ -2,14 +2,14 @@
   box-sizing: border-box;
 }
 
-.top-page {
+.header-top {
   width: 100vw;
   padding: 2vh 15vw;
   display: flex;
   background-color: white;
 }
 
-.nav {
+.header-nav {
   font-size: 18px;
   display: flex;
   justify-content: space-around;
@@ -18,7 +18,7 @@
   padding: 1vh 0;
 }
 
-.lists {
+.header-lists {
   display: flex;
   justify-content: space-around;
   list-style: none;

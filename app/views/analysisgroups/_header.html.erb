@@ -1,7 +1,7 @@
 <%# CSS・・・assets/stylesheets/header.css %>
-<div class='top-page'>
-  <div class='nav'>
-    <ul class='lists'>
+<div class='header-top'>
+  <div class='header-nav'>
+    <ul class='header-lists'>
       <% if user_signed_in? %>
         <li><%= link_to current_user.name_sei, "#", class: "user-name"  %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, method: :delete, class: "logout"  %></li>

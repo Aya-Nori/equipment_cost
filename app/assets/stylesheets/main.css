@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-.page-main {
+.main-top {
   width: 100vw;
   padding: 2vh 15vw;
   display: flex;
@@ -18,14 +18,21 @@
   padding: 1vh 0;
 }
 
-.main_area {
+.main_lists {
   display: flex;
   justify-content: space-around;
   list-style: none;
   align-items: flex-end;
 }
 
-.text {
+.text-kiki {
+  text-decoration: none;
+  line-height: 32px;
+  margin-right: 3vw;
+  color: #333333;
+}
+
+.text-ichiran {
   text-decoration: none;
   line-height: 32px;
   margin-right: 3vw;
