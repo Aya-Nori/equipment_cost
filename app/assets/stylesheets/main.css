@@ -10,31 +10,34 @@
 }
 
 .main_nav {
-  font-size: 18px;
   display: flex;
   justify-content: space-around;
-  margin: 0 auto
+  margin: 0 auto;
   width: 100%;
-  padding: 1vh 0;
 }
 
-.main_lists {
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
-  align-items: flex-end;
-}
-
-.text-kiki {
+.rounded-button1 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 30px; 
   text-decoration: none;
-  line-height: 32px;
-  margin-right: 3vw;
-  color: #333333;
 }
 
-.text-ichiran {
+.rounded-button1:hover {
+  background-color: red;
+}
+
+.rounded-button2 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #00ff7b;
+  color: #fff;
+  border-radius: 30px;
   text-decoration: none;
-  line-height: 32px;
-  margin-right: 3vw;
-  color: #333333;
+}
+
+.rounded-button2:hover {
+  background-color: red;
 }
