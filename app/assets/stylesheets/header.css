@@ -32,7 +32,7 @@
   color: black;
   border-radius: 30px;
   text-decoration: none;
-  border: 2px solid #000;
+  border: 2px solid gray;
   font-weight: bold;
   margin-right: 3vw;
 }
@@ -61,8 +61,12 @@
   color: black;
   border-radius: 30px;
   text-decoration: none;
-  border: 2px solid #000;
+  border: 2px solid gray;
   margin-right: 3vw;
+}
+
+.login1:hover {
+  background-color: red;
 }
 
 .sign-up1 {
