@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
+.main-top {
+  width: 100vw;
+  padding: 2vh 15vw;
+  display: flex;
+  background-color: white;
+}
+
+.main_nav {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.rounded-button1 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 30px; 
+  text-decoration: none;
+}
+
+.rounded-button1:hover {
+  background-color: red;
+}
+
+.rounded-button2 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #00ff7b;
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+}
+
+.rounded-button2:hover {
+  background-color: red;
+}

@@ -37,8 +37,8 @@ equipment_cost
 
 # テスト用アカウント
 
-- Basic認証パスワード：
-- Basic認証ID：
+- Basic認証パスワード：ayabe
+- Basic認証ID：39485
 - メールアドレス：
 - パスワード：
 
@@ -103,14 +103,15 @@ equipment_cost
 # テーブル設計
 ## users テーブル
 
-| Column             | Type   | Options                   |
-| ------------------ | ------ | ------------------------- |
-| name_sei           | string | null: false               |
-| name_mei           | string | null: false               |
-| encrypted_password | string | null: false               |
-| extention_number   | string | null: false               |
-| division           | string | null: false               |
-| section            | string | null: false               |
+| Column             | Type    | Options                   |
+| ------------------ | ------- | ------------------------- |
+| name_sei           | string  | null: false               |
+| name_mei           | string  | null: false               |
+| email              | string  | null: false, unique: true |
+| encrypted_password | string  | null: false               |
+| extention_number   | integer | null: false               |
+| division           | string  | null: false               |
+| section            | string  | null: false               |
 
 ### Association
 
@@ -123,8 +124,8 @@ has_many : comments
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ------------------------- |
 | equipment_name     | string | null: false               |
-| start_time         | string | null: false               |
-| finish_time        | string | null: false               |
+| start_time         | date   |                           |
+| finish_time        | date   |                           |
 | category           | string | null: false               |
 
 ### Association

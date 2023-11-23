@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+}
+
+.header-top {
+  width: 100vw;
+  padding: 2vh 15vw;
+  display: flex;
+  background-color: white;
+}
+
+.header-nav {
+  font-size: 18px;
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto
+  width: 100%;
+  padding: 1vh 0;
+}
+
+.header-lists {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  align-items: flex-end;
+}
+
+.user-name1 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: white;
+  color: black;
+  border-radius: 30px;
+  text-decoration: none;
+  border: 2px solid gray;
+  font-weight: bold;
+  margin-right: 3vw;
+}
+
+.user-name1:hover {
+  background-color: red;
+}
+
+.logout1 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: gray;
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+}
+
+.logout1:hover {
+  background-color: red;
+}
+
+.login1 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: white;
+  color: black;
+  border-radius: 30px;
+  text-decoration: none;
+  border: 2px solid gray;
+  margin-right: 3vw;
+}
+
+.login1:hover {
+  background-color: red;
+}
+
+.sign-up1 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff7baa;
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+}
+
+.sign-up1:hover {
+  background-color: red;
+}
