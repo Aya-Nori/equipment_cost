@@ -1,27 +1,4 @@
-<!DOCTYPE html>
-<html>
+<%= render "header" %>
 
-<head>
-  <title>分析機器費用精算</title>
-  <link rel="icon" href="images/favicon.ico">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_importmap_tags %>
-</head>
 
-<h1>分析機器費用精算アプリトップページ</h1>
-
-<body>
-  <%= yield %>
-
-<div class="wrapper">
-  <%= render "header" %>
-  <br>
-  <%= render "main" %>
-</div>
-
-</body>
-
-</html>
+<%= render "main" %>

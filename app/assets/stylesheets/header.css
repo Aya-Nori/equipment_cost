@@ -10,12 +10,15 @@
 }
 
 .header-nav {
-  font-size: 18px;
   display: flex;
-  justify-content: space-around;
-  margin: 0 auto
+  justify-content: space-between;
   width: 100%;
   padding: 1vh 0;
+  flex-wrap: wrap;
+}
+
+.title_text {
+  font-size: 18pt;
 }
 
 .header-lists {
