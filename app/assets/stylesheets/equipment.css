@@ -21,21 +21,14 @@
   box-sizing: border-box;
   border: 1px solid #ccc;
   padding: 10px;
+  border-radius: 20px; 
+}
+
+.list:hover {
+  background-color: red;
 }
 
 /* 各アイテム内のスタイル */
 .item-info {
-  margin-top: 10px;
-}
-
-.item-name {
-  font-size: 1.2em;
-}
-
-.item-price {
-  font-weight: bold;
-}
-
-.star-btn {
-  margin-top: 10px;
+  margin: 10px 0 15px;
 }

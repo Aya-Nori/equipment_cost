@@ -5,17 +5,11 @@
       <% category_equipments.each do |equipment| %>
         <li class='list'>
           <%= link_to equipment_path(equipment.id) do %>
-            <%= equipment.equipment_name %>
             <div class='item-info'>
-              <h3 class='item-name'>
-                <%= equipment.equipment_name %>
+              <h3>
+                装 置 名：<%= equipment.equipment_name %><br>
+                利用料金：<%= equipment.price %>円／時間<br>
               </h3>
-              <div class='item-price'>
-                <span><%= equipment.price %>円<br><br></span>
-                <div class='star-btn'>
-                  <span class='star-count'></span>
-                </div>
-              </div>
             </div>
           <% end %>
         </li>
