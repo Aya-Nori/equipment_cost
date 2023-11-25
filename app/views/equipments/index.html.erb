@@ -1,20 +1,25 @@
 <div>
-  <% @equipments.each do |equipment| %>
-    <li class='list'>
-      <%= link_to equipment_path(equipment.id) do %>
-        <%= equipment.equipment_name %>
-          <div class='item-info'>
-          <h3 class='item-name'>
+  <% @equipments.group_by(&:category).each do |category, category_equipments| %>
+    <h2 class='category-title'><%= category %></h2>
+    <ul class='category-list'>
+      <% category_equipments.each do |equipment| %>
+        <li class='list'>
+          <%= link_to equipment_path(equipment.id) do %>
             <%= equipment.equipment_name %>
-          </h3>
-          <div class='item-price'>
-            <span><%= equipment.price %>円<br><br></span>
-            <div class='star-btn'>
-            <span class='star-count'></span>
+            <div class='item-info'>
+              <h3 class='item-name'>
+                <%= equipment.equipment_name %>
+              </h3>
+              <div class='item-price'>
+                <span><%= equipment.price %>円<br><br></span>
+                <div class='star-btn'>
+                  <span class='star-count'></span>
+                </div>
+              </div>
             </div>
-          </div>
-          </div>
+          <% end %>
+        </li>
       <% end %>
-    </li>
+    </ul>
   <% end %>
 </div>

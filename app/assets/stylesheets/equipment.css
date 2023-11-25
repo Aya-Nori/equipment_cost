@@ -1,49 +1,41 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* カテゴリータイトルのスタイル */
+.category-title {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+  margin-top: 30px;
 }
 
-/* Apply styles to the list items */
-.list {
+/* カテゴリーごとのリストスタイル */
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
   list-style: none;
-  margin-bottom: 20px;
-  padding: 10px;
+  padding: 0;
+  margin: 0;
+}
+
+/* 各アイテムのスタイル */
+.list {
+  flex: 0 0 20%; /* カテゴリーリスト内での横幅を調整 */
+  margin: 0 1.5%; /* アイテム間のマージン */
+  box-sizing: border-box;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 10px;
 }
 
-/* Style the link inside the list item */
-.list a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-}
-
-/* Style the item info container */
+/* 各アイテム内のスタイル */
 .item-info {
   margin-top: 10px;
 }
 
-/* Style the item name */
 .item-name {
-  font-size: 18px;
-  margin-bottom: 5px;
+  font-size: 1.2em;
 }
 
-/* Style the item price */
 .item-price {
-  color: #007bff;
-  font-size: 16px;
+  font-weight: bold;
 }
 
-/* Style the star button */
 .star-btn {
   margin-top: 10px;
-}
-
-/* Style the star count */
-.star-count {
-  color: gold;
-  font-size: 20px;
 }
