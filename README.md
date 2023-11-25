@@ -124,14 +124,25 @@ has_many : comments
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ------------------------- |
 | equipment_name     | string | null: false               |
-| start_time         | date   |                           |
-| finish_time        | date   |                           |
 | category           | string | null: false               |
 
 ### Association
 
 has_many : comments
 belongs_to : user
+
+
+<!-- ## start_finish テーブル
+
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| start_time         | date   |                           |
+| finish_time        | date   |                           |
+
+### Association
+
+has_many : users
+has_many : equipments -->
 
 
 ## comments テーブル
