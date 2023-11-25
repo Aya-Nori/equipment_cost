@@ -121,10 +121,11 @@ has_many : comments
 
 ## equipments テーブル
 
-| Column             | Type   | Options                   |
-| ------------------ | ------ | ------------------------- |
-| equipment_name     | string | null: false               |
-| category           | string | null: false               |
+| Column             | Type    | Options                   |
+| ------------------ | ------- | ------------------------- |
+| equipment_name     | string  | null: false               |
+| category           | string  | null: false               |
+| price              | integer | null: false               |
 
 ### Association
 
