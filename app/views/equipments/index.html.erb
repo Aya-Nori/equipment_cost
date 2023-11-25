@@ -1,11 +1,20 @@
-<div class="contents row">
+<div>
   <% @equipments.each do |equipment| %>
-    <div class="content_post">
-      <span class="name">
-        <%= equipment.category %>
+    <li class='list'>
+      <%= link_to equipment_path(equipment.id) do %>
         <%= equipment.equipment_name %>
-        <%= equipment.price %>
-      </span>
-    </div>
+          <div class='item-info'>
+          <h3 class='item-name'>
+            <%= equipment.equipment_name %>
+          </h3>
+          <div class='item-price'>
+            <span><%= equipment.price %>円<br><br></span>
+            <div class='star-btn'>
+            <span class='star-count'></span>
+            </div>
+          </div>
+          </div>
+      <% end %>
+    </li>
   <% end %>
 </div>
