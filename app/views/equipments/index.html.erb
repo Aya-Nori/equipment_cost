@@ -1,0 +1,11 @@
+<div class="contents row">
+  <% @equipments.each do |equipment| %>
+    <div class="content_post">
+      <span class="name">
+        <%= equipment.category %>
+        <%= equipment.equipment_name %>
+        <%= equipment.price %>
+      </span>
+    </div>
+  <% end %>
+</div>
