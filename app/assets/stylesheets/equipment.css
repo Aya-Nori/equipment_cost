@@ -22,6 +22,7 @@
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 20px; 
+  background-color: white;
 }
 
 .list:hover {
@@ -31,4 +32,10 @@
 /* 各アイテム内のスタイル */
 .item-info {
   margin: 10px 0 15px;
+}
+
+/* リンクのスタイル */
+.item-link {
+  text-decoration: none; /* アンダーラインをなくす */
+  color: black; /* テキスト色を黒に設定 */
 }

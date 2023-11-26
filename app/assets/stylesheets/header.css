@@ -2,30 +2,18 @@
   box-sizing: border-box;
 }
 
-.header-top {
-  width: 100vw;
-  padding: 2vh 15vw;
-  display: flex;
-  background-color: white;
-}
-
-.header-nav {
-  display: flex;
-  justify-content: space-between;
+.header_top {
   width: 100%;
-  padding: 1vh 0;
-  flex-wrap: wrap;
+  padding: 2vh;
+  display: flex;
+  /* background-color: lightcyan; */
 }
 
-.title_text {
-  font-size: 18pt;
-}
-
-.header-lists {
+.header_nav {
   display: flex;
   justify-content: space-around;
-  list-style: none;
-  align-items: flex-end;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .user-name1 {

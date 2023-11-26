@@ -2,11 +2,11 @@
   box-sizing: border-box;
 }
 
-.main-top {
-  width: 100vw;
-  padding: 2vh 15vw;
+.main_top {
+  width: 100%;
+  padding: 2vh;
   display: flex;
-  background-color: white;
+  /* background-color: white; */
 }
 
 .main_nav {
