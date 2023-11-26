@@ -1,9 +1,9 @@
 <div>
   <% @equipments.group_by(&:category).each do |category, category_equipments| %>
     <h2 class='category-title'><%= category %></h2>
-    <ul class='category-list'>
+    <div class='category-list'>
       <% category_equipments.each do |equipment| %>
-        <li class='list'>
+        <div class='list'>
           <%= link_to equipment_path(equipment.id), class: 'item-link' do %>
             <div class='item-info'>
               <h3>
@@ -12,8 +12,8 @@
               </h3>
             </div>
           <% end %>
-        </li>
+        </div>
       <% end %>
-    </ul>
+    </div>
   <% end %>
 </div>
