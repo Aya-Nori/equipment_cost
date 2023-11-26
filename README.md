@@ -115,9 +115,9 @@ equipment_cost
 
 ### Association
 
-has_many : equipments
-has_many : comments
-has_many : start_finish_times
+- has_many : equipments
+- has_many : comments
+- has_many : start_finish_times
 
 
 ## equipments テーブル
@@ -130,9 +130,9 @@ has_many : start_finish_times
 
 ### Association
 
-has_many : comments
-has_many : start_finish_times
-belongs_to : user
+- has_many : comments
+- has_many : start_finish_times
+- belongs_to : user
 
 
 ## start_finish_times テーブル
@@ -144,8 +144,8 @@ belongs_to : user
 
 ### Association
 
-belongs_to : user
-belongs_to : equipment
+- belongs_to : user
+- belongs_to : equipment
 
 
 ## comments テーブル
@@ -156,7 +156,7 @@ belongs_to : equipment
 
 ### Association
 
-belongs_to : user
-belongs_to : equipment
+- belongs_to : user
+- belongs_to : equipment
 
 
