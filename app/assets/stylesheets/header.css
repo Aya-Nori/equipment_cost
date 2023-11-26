@@ -26,6 +26,7 @@
   border: 2px solid gray;
   font-weight: bold;
   margin-right: 3vw;
+  transition: background-color 0.3s ease;
 }
 
 .user-name1:hover {
@@ -54,6 +55,7 @@
   text-decoration: none;
   border: 2px solid gray;
   margin-right: 3vw;
+  transition: background-color 0.3s ease;
 }
 
 .login1:hover {
@@ -67,6 +69,7 @@
   color: #fff;
   border-radius: 30px;
   text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
 .sign-up1:hover {

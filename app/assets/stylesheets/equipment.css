@@ -23,6 +23,7 @@
   border-radius: 20px; 
   background-color: white;
   margin-bottom: 10px;
+  transition: background-color 0.3s ease;
 }
 
 .list:hover {

@@ -1,4 +1,4 @@
-<%= render "layouts/application" do %>
+<div class="Show__container">
   <div class="contents row">
     <% if @equipment.present? %>
       <p><%= @equipment.equipment_name %></p>
@@ -7,4 +7,4 @@
       <p>Equipment not found</p>
     <% end %>
   </div>
-<% end %>
+</div>
