@@ -1,6 +1,10 @@
-<div class="contents row">
-
-    <p><%= @equipments.equipment_name %></p>
-    <p><%= @equipments.price %></p>
-
-</div>
+<%= render "layouts/application" do %>
+  <div class="contents row">
+    <% if @equipment.present? %>
+      <p><%= @equipment.equipment_name %></p>
+      <p><%= @equipment.price %></p>
+    <% else %>
+      <p>Equipment not found</p>
+    <% end %>
+  </div>
+<% end %>
