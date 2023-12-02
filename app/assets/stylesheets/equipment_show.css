@@ -1,0 +1,102 @@
+/* カテゴリーごとのリストスタイル */
+.equipment_container {
+  /* display: flex; */
+  justify-content: center;
+}
+
+.equipment_name {
+  margin: 0 1.5%; /* アイテム間のマージン */
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 20px; 
+  background-color: white;
+  margin-bottom: 10px;
+  color: black;
+  font-size: 32px;
+  text-align: center;
+  width: 80vw;
+}
+
+.equipment_price {
+  margin: 0 1.5%; /* アイテム間のマージン */
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 20px; 
+  background-color: white;
+  margin-bottom: 10px;
+  color: black;
+  font-size: 32px;
+  text-align: center;
+  width: 80vw;
+}
+
+.equipment_name_title{
+  display: flex;
+  text-align: right;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.equipment_price_title{
+  display: flex;
+  text-align: right;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title_block{
+  font-size: 16px;
+  width:30vw;
+}
+
+
+
+.button_container {
+  width: 100%;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.button_area {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.rounded_button_start {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  line-height: 100px;
+  font-size: 32px;
+}
+
+.rounded_button_start:hover {
+  background-color: red;
+}
+
+.rounded_button_finish {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: #00ff7b;
+  color: #fff;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  line-height: 100px;
+  font-size: 32px;
+}
+
+.rounded_button_finish:hover {
+  background-color: red;
+}

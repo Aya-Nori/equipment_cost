@@ -1,10 +1,52 @@
 <div class="Show__container">
-  <div class="contents row">
+  <div class="equipment_container">
+
     <% if @equipment.present? %>
-      <p><%= @equipment.equipment_name %></p>
-      <p><%= @equipment.price %></p>
+      <div class='equipment_name_title'>
+        <div class='title_block'>
+          装置名：
+        </div>
+        <div class='equipment_name'>
+          <%= @equipment.equipment_name %>
+        </div>
+      </div>
+
+      <div class='equipment_price_title'>
+        <div class='title_block'>
+          利用料金：
+        </div>
+        <div class='equipment_price'>
+          <%= @equipment.price %>円/時間
+        </div>
+      </div>
+
+  <div class='button_container'>
+    <div class='button_area'>
+      <div>
+        <%= link_to '開始', "#", class: "rounded_button_start" %>
+      </div>
+      <div>
+        <%= link_to '終了', "#", class: "rounded_button_finish" %>
+      </div>
+    </div>
+  </div>
+
+  <div class='user_now_container'>
+    <div class='user_now_area'>
+  現在、利用者がいれば以下を表示する。
+      <div>
+        <p>現在、名字（内線番号）さんが利用中です。</p>
+      </div>
+      <br><br>
+  現在、利用者がいなければ以下を表示する。
+      <div>現在、利用者はいません。
+      </div>
+  </div>
+
+
     <% else %>
       <p>Equipment not found</p>
     <% end %>
+
   </div>
 </div>
