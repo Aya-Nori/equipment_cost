@@ -1,0 +1,11 @@
+<div class="contents row">
+  <div class="container">
+    <h3>機器登録</h3>
+    <%= form_with(model: @equipment, url: equipments_path, local: true) do |form| %>
+      <%= form.text_field :equipment_name, placeholder: "機器名" %>
+      <%= form.text_field :category, placeholder: "機器分類" %>
+      <%= form.text_field :price, placeholder: "利用料金" %>
+      <%= form.submit "機器登録" %>
+    <% end %>
+  </div>
+</div>
