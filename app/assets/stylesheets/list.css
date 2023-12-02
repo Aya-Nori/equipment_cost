@@ -6,24 +6,21 @@
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 /* 各アイテムのスタイル */
 .list-nav {
-  margin: 0 1.5%; /* アイテム間のマージン */
+  margin: 0 5px; /* アイテム間のマージン */
   box-sizing: border-box;
   border: 1px solid #ccc;
-  padding: 0 5px;
-  border-radius: 20px; 
+  border-radius: 10px; 
   margin-bottom: 10px;
   background-color: lightgray;
 }
 
 /* 各アイテム内のスタイル */
 .list-info {
-  margin: 5px 10px 10px;
+  margin: 5px;
   text-decoration: none; /* アンダーラインをなくす */
   color: black; /* テキスト色を黒に設定 */
 }
