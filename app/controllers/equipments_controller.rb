@@ -9,6 +9,8 @@ class EquipmentsController < ApplicationController
 
   def show
     @equipment = Equipment.find(params[:id])
+    @start_finish_time = @equipment.start_finish_times.find_by(equipment_id: @equipment.id)
+    @user = @equipment.user
   end
 
   def create

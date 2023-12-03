@@ -20,29 +20,30 @@
         </div>
       </div>
 
-  <div class='button_container'>
-    <div class='button_area'>
-      <div>
-        <%= link_to '開始', start_analysis_equipment_path(@equipment), method: :post, class: "rounded_button_start" %>
+      <div class='button_container'>
+        <div class='button_area'>
+          <div>
+            <%= link_to '開始', start_analysis_equipment_path(@equipment), method: :post, class: "rounded_button_start" %>
+          </div>
+          <div>
+            <%= link_to '終了', finish_analysis_equipment_path(@equipment), method: :post, class: "rounded_button_finish" %>
+          </div>
+        </div>
       </div>
-      <div>
-        <%= link_to '終了', finish_analysis_equipment_path(@equipment), method: :post, class: "rounded_button_finish" %>
-      </div>
-    </div>
-  </div>
 
-  <div class='user_now_container'>
-    <div class='user_now_area'>
-  現在、利用者がいれば以下を表示する。
-      <div>
-        <p>現在、名字（内線番号）さんが利用中です。</p>
+      <div class='user_now_container'>
+        <div class='user_now_area'>
+          <% if @start_finish_time && @start_finish_time.condition == 1 %>
+            <div class='user_now_on'>
+              <p>現在、<%= @start_finish_time.user.name_sei %>（<%= @start_finish_time.user.extention_number %>）さんが利用中です。</p>
+            </div>
+          <% else %>
+            <div class='user_now_off'>
+              <p>現在、利用者はいません。</p>
+            </div>
+          <% end %>
+        </div>
       </div>
-      <br><br>
-  現在、利用者がいなければ以下を表示する。
-      <div>現在、利用者はいません。
-      </div>
-  </div>
-
 
     <% else %>
       <p>Equipment not found</p>
