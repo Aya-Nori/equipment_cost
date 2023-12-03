@@ -13,6 +13,7 @@ class EquipmentsController < ApplicationController
 
   def create
     Equipment.create(equipment_params)
+    redirect_to '/'
   end
 
   private
