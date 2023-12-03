@@ -3,7 +3,7 @@ class CreateEquipment < ActiveRecord::Migration[7.0]
     create_table :equipment do |t|
       t.string :equipment_name, null: false
       t.string :category, null: false
-      t.integer :price, null: false
+      t.float :price, null: false
       t.timestamps
     end
   end
