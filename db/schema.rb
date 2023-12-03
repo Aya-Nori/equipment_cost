@@ -20,8 +20,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_03_002822) do
   end
 
   create_table "start_finish_times", charset: "utf8", force: :cascade do |t|
-    t.date "start_time"
-    t.date "finish_time"
+    t.datetime "start_time"
+    t.datetime "finish_time"
     t.integer "condition", null: false
     t.integer "user_id", null: false
     t.integer "equipment_id", null: false

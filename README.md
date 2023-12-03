@@ -139,8 +139,8 @@ equipment_cost
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| start_time         | date       |                                |
-| finish_time        | date       |                                |
+| start_time         | datetime   |                                |
+| finish_time        | datetime   |                                |
 | condition          | string     |                                |
 | user_id            | references | null: false, foreign_key: true |
 | item_id            | references | null: false, foreign_key: true |
