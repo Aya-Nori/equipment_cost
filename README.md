@@ -137,10 +137,13 @@ equipment_cost
 
 ## start_finish_times テーブル
 
-| Column             | Type   | Options                   |
-| ------------------ | ------ | ------------------------- |
-| start_time         | date   |                           |
-| finish_time        | date   |                           |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| start_time         | date       |                                |
+| finish_time        | date       |                                |
+| condition          | string     |                                |
+| user_id            | references | null: false, foreign_key: true |
+| item_id            | references | null: false, foreign_key: true |
 
 ### Association
 

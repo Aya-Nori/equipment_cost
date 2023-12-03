@@ -10,4 +10,7 @@ class User < ApplicationRecord
   validates :division, presence: true
   validates :section, presence: true
 
+  has_many :equipments
+  has_many :start_finish_times
+
 end
