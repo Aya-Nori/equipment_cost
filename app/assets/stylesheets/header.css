@@ -3,10 +3,8 @@
 }
 
 .header_top {
-  width: 100%;
   padding: 2vh;
   display: flex;
-  /* background-color: lightcyan; */
 }
 
 .header_nav {
@@ -23,10 +21,9 @@
   color: black;
   border-radius: 30px;
   text-decoration: none;
-  border: 2px solid gray;
-  font-weight: bold;
-  margin-right: 3vw;
   transition: background-color 0.3s ease;
+  font-weight: bold;
+  border: 2px solid gray;
 }
 
 .user-name1:hover {
@@ -40,6 +37,8 @@
   color: #fff;
   border-radius: 30px;
   text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
 }
 
 .logout1:hover {
@@ -54,8 +53,8 @@
   border-radius: 30px;
   text-decoration: none;
   border: 2px solid gray;
-  margin-right: 3vw;
   transition: background-color 0.3s ease;
+  font-weight: bold;
 }
 
 .login1:hover {
@@ -70,6 +69,7 @@
   border-radius: 30px;
   text-decoration: none;
   transition: background-color 0.3s ease;
+  font-weight: bold;
 }
 
 .sign-up1:hover {

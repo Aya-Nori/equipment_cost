@@ -3,10 +3,8 @@
 }
 
 .main_top {
-  width: 100%;
   padding: 2vh;
   display: flex;
-  /* background-color: white; */
 }
 
 .main_nav {
@@ -24,7 +22,9 @@
   border-radius: 30px; 
   text-decoration: none;
   transition: background-color 0.3s ease;
+  font-weight: bold;
 }
+
 
 .rounded-button1:hover {
   background-color: red;
@@ -38,6 +38,7 @@
   border-radius: 30px;
   text-decoration: none;
   transition: background-color 0.3s ease;
+  font-weight: bold;
 }
 
 .rounded-button2:hover {
