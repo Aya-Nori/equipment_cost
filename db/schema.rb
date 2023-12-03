@@ -10,11 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_02_234531) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_03_002822) do
   create_table "equipments", charset: "utf8", force: :cascade do |t|
     t.string "equipment_name", null: false
     t.string "category", null: false
     t.integer "price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_finish_times", charset: "utf8", force: :cascade do |t|
+    t.date "start_time"
+    t.date "finish_time"
+    t.integer "condition", null: false
+    t.integer "user_id", null: false
+    t.integer "equipment_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
