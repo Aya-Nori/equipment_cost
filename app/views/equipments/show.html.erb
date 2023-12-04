@@ -33,7 +33,7 @@
 
       <div class='user_now_container'>
         <div class='user_now_area'>
-          <% if @start_finish_time && @start_finish_time.condition == 1 %>
+          <% if @start_finish_time.condition == 1 %>
             <div class='user_now_on'>
               <p>現在、<%= @start_finish_time.user.name_sei %>（<%= @start_finish_time.user.extention_number %>）さんが利用中です。</p>
             </div>
