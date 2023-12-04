@@ -33,15 +33,17 @@
 
       <div class='user_now_container'>
         <div class='user_now_area'>
-          <% if @start_finish_time && @start_finish_time.condition == 1 %>
+          <% latest_start_finish_time = @equipment.start_finish_times.order(created_at: :desc).first %>
+          <% if latest_start_finish_time %>
             <div class='user_now_on'>
-              <p><%= @start_finish_time.condition %>現在、<%= @start_finish_time.user.name_sei %>（<%= @start_finish_time.user.extention_number %>）さんが利用中です。</p>
+            <p><%= latest_start_finish_time.condition %>現在、<%= latest_start_finish_time.user.name_sei %>（<%= latest_start_finish_time.user.extention_number %>）さんが利用中です。</p>
             </div>
           <% else %>
             <div class='user_now_off'>
-              <p><%= @start_finish_time.condition %>現在、利用者はいません。</p>
+              <p>現在、利用者はいません。</p>
             </div>
           <% end %>
+
         </div>
       </div>
 
