@@ -37,7 +37,7 @@
   <p>現在使用中の機器はありません。</p>
 <%# end %>
 
-<% @equipments.group_by(&:category).each do |category, category_equipments| %>
+<% (@equipments || []).group_by(&:category).each do |category, category_equipments| %>
   <div>
     <% category_equipments.each do |equipment| %>
       <% latest_start_finish_time = equipment.start_finish_times.order(created_at: :desc).first %>
@@ -57,4 +57,3 @@
     <% end %>
   </div>
 <% end %>
-
