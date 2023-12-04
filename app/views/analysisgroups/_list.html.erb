@@ -36,3 +36,25 @@
   使用中の機器がないとき、以下のように表示する。
   <p>現在使用中の機器はありません。</p>
 <%# end %>
+
+  <% @equipments.group_by(&:category).each do |category, category_equipments| %>
+
+      <div>
+        <% category_equipments.each do |equipment| %>
+          <% latest_start_finish_time = @equipment.start_finish_times.order(created_at: :desc).first %>
+          <div>
+              <div>
+              <% if latest_start_finish_time && latest_start_finish_time.condition == 1 %>
+                <div class='user_now_on'>
+                <p>現在、<%= latest_start_finish_time.user.name_sei %>（<%= latest_start_finish_time.user.extention_number %>）さんが利用中です。</p>
+                </div>
+              <% else %>
+                <div class='user_now_off'>
+                <p>現在、利用者はいません。</p>
+                </div>
+              <% end %>
+              </div>
+          </div>
+        <% end %>
+      </div>
+  <% end %>
