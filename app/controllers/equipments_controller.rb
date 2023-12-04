@@ -22,7 +22,7 @@ class EquipmentsController < ApplicationController
     @equipment = Equipment.find(params[:id])
     start_finish_time = @equipment.start_finish_times.build(
       start_time: Time.current,
-      condition: 1,
+      condition: 2,
       user: current_user
     )
     
@@ -39,7 +39,7 @@ class EquipmentsController < ApplicationController
     @equipment = Equipment.find(params[:id])
     start_finish_time = @equipment.start_finish_times.build(
       finish_time: Time.current,
-      condition: 0,
+      condition: 3,
       user: current_user
     )
     
