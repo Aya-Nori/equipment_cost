@@ -34,7 +34,7 @@
       <div class='user_now_container'>
         <div class='user_now_area'>
           <% latest_start_finish_time = @equipment.start_finish_times.order(created_at: :desc).first %>
-          <% if latest_start_finish_time %>
+          <% if latest_start_finish_time && latest_start_finish_time.condition == 1 %>
             <div class='user_now_on'>
             <p><%= latest_start_finish_time.condition %>現在、<%= latest_start_finish_time.user.name_sei %>（<%= latest_start_finish_time.user.extention_number %>）さんが利用中です。</p>
             </div>
