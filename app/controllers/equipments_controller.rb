@@ -18,6 +18,10 @@ class EquipmentsController < ApplicationController
     redirect_to '/'
   end
 
+  def all_list
+    @equipments = Equipment.all
+  end
+
   def start_analysis
     @equipment = Equipment.find(params[:id])
     start_finish_time = @equipment.start_finish_times.build(
