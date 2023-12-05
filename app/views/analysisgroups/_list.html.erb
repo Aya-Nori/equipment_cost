@@ -1,6 +1,6 @@
 <%# CSS・・・assets/stylesheets/list.css %>
 
-<h3>現在使用中の機器</h3>
+<div class='text-title'>現在使用中の機器</div>
 
 <div class='list-all'>
   <% count = 0 %>
@@ -27,7 +27,9 @@
   <% end %>
 
   <% if count == 0 %>
-    <p>現在使用中の機器はありません。</p>
+    <div class='list-text-nav'>
+    <div class='list-text'>現在使用中の機器はありません。</div>
+    </div>
   <% end %>
 
 </div>
