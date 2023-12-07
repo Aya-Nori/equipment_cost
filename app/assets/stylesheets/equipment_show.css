@@ -100,3 +100,20 @@
 .rounded_button_finish:hover {
   background-color: red;
 }
+
+.user_now_on {
+  background-color: yellow;
+  font-size: 16px;
+  text-align: center;
+  color:black;
+  line-height: 32px;
+  font-weight: bold;
+}
+
+.user_now_off {
+  background-color: white;
+  font-size: 16px;
+  text-align: center;
+  color:black;
+  line-height: 32px;
+}

@@ -24,3 +24,20 @@
   text-decoration: none; /* アンダーラインをなくす */
   color: black; /* テキスト色を黒に設定 */
 }
+
+.text-title {
+  text-align: center;
+  margin-top: 20px;
+  color: pink;
+  font-size: 24px;
+}
+
+.list-text-nav {
+  width: 100%;
+  display: block;
+}
+
+.list-text {
+  margin: 10px auto;
+  text-align: center;
+}

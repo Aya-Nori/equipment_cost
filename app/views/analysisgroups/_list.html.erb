@@ -1,38 +1,39 @@
 <%# CSS・・・assets/stylesheets/list.css %>
 
-<%# if some_condition %> <!-- 一定条件が満たされた場合現在使用中の機器を表示する -->
-  <h3>現在使用中の機器</h3>
-    使用中の機器があるとき、以下のように表示する。
-    <div class='list-all'>
+<div class='text-title'>現在使用中の機器</div>
 
-      <div class='list-nav'>
-      <div class='list-info'>
-        機器：<%= "機器名" %><br>
-        利用者：<%= "利用者名" %><br>
-        内線番号：<%= "内線番号" %><br>
-      </div>
-      </div>
-
-      <div class='list-nav'>
-      <div class='list-info'>
-        機器：<%= "機器名" %><br>
-        利用者：<%= "利用者名" %><br>
-        内線番号：<%= "内線番号" %><br>
-      </div>
-      </div>
-
-      <div class='list-nav'>
-      <div class='list-info'>
-        機器：<%= "機器名" %><br>
-        利用者：<%= "利用者名" %><br>
-        内線番号：<%= "内線番号" %><br>
-      </div>
-      </div>
-
+<div class='list-all'>
+  <% count = 0 %>
+  <% (@equipments || []).group_by(&:category).each do |category, category_equipments| %>
+    <div>
+      <% category_equipments.each do |equipment| %>
+        <% latest_start_finish_time = equipment.start_finish_times.order(created_at: :desc).first %>
+        <div>
+          <div>
+            <% if latest_start_finish_time && latest_start_finish_time.condition == 1 %>
+              <div class='list-nav'>
+                <div class='list-info'>
+                  機器：<%= latest_start_finish_time.equipment.equipment_name %><br>
+                  利用者：<%= latest_start_finish_time.user.name_sei %><br>
+                  内線番号：<%= latest_start_finish_time.user.extention_number %><br>
+                  <% count += 1 %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
-<%# else %>
-  <br>
-  <br>
-  使用中の機器がないとき、以下のように表示する。
-  <p>現在使用中の機器はありません。</p>
-<%# end %>
+  <% end %>
+
+  <% if count == 0 %>
+    <div class='list-text-nav'>
+    <div class='list-text'>現在使用中の機器はありません。</div>
+    </div>
+  <% end %>
+
+</div>
+
+
+
+

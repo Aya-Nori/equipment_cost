@@ -1,0 +1,27 @@
+<div class="Show__container">
+<h1>Start Finish Times</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User Name</th>
+      <th>Equipment Name</th>
+      <th>Start Time</th>
+      <th>Finish Time</th>
+      <th>Condition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @start_finish_times.each do |start_finish_time| %>
+      <tr>
+        <td><%= start_finish_time.user.name_sei %></td>
+        <td><%= start_finish_time.equipment.equipment_name %></td>
+        <td><%= start_finish_time.start_time %></td>
+        <td><%= start_finish_time.finish_time %></td>
+        <td><%= start_finish_time.condition %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
