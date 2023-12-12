@@ -1,26 +1,60 @@
 <div class="Show__container">
-<h1>Start Finish Times</h1>
+<h1>分析機器利用　実績表</h1>
 
-<table>
+<table border="1">
   <thead>
     <tr>
-      <th>User Name</th>
-      <th>Equipment Name</th>
-      <th>Start Time</th>
-      <th>Finish Time</th>
-      <th>Condition</th>
+      <th>No.</th>
+      <th>利用日</th>
+      <th>利用者名</th>
+      <th>機器名</th>
+      <th>利用開始時間</th>
+      <th>利用終了時間</th>
+      <th>利用時間</th>
+      <th>機器単価</th>
+      <th>利用料金</th>
     </tr>
   </thead>
   <tbody>
-    <% @start_finish_times.each do |start_finish_time| %>
+    <% number = 0 %>
+    <% total_calc_price = 0 %>
+    <% @start_finish_times.each_with_index do |n, index| %>
       <tr>
-        <td><%= start_finish_time.user.name_sei %></td>
-        <td><%= start_finish_time.equipment.equipment_name %></td>
-        <td><%= start_finish_time.start_time %></td>
-        <td><%= start_finish_time.finish_time %></td>
-        <td><%= start_finish_time.condition %></td>
+        <% if n.condition == 1 && index + 1 < @start_finish_times.length %>
+          <% number += n.condition %> <!-- 正しいカウントを増やす方法 -->
+          <td><%= number %></td>
+          <td><%= n.start_time.strftime('%Y年 %m月 %d日') %></td> <!-- 直接strftimeを呼び出し -->
+          <td><%= n.user.name_sei %></td>
+          <td><%= n.equipment.equipment_name %></td>
+          <% calc_start_time = Time.at(n.start_time).utc.strftime("%H:%M:%S") %>
+          <td><%= calc_start_time %></td>
+
+          <% if @start_finish_times[index + 1].finish_time.present? %>
+            <% calc_finish_time = Time.at(@start_finish_times[index + 1].finish_time).utc.strftime("%H:%M:%S") %>
+            <td><%= calc_finish_time %></td>
+          <% else %>
+            <td></td>
+          <% end %>
+
+          <% if @start_finish_times[index + 1].finish_time.present? %>
+            <% calc_seconds = (@start_finish_times[index + 1].finish_time - n.start_time).to_i %>
+            <% calc_hours = (calc_seconds / 3600.0).ceil %>
+            <% calc_time = Time.at(calc_hours * 3600).utc.strftime("%H") %>
+            <td><%= calc_time %></td>
+            <td><%= n.equipment.price %>円</td>
+            <% calc_price = calc_hours * n.equipment.price %>
+            <td><%= calc_price %>円</td>
+            <% total_calc_price += calc_price %>
+          <% else %>
+            <td></td>
+            <td></td>
+            <td></td>
+          <% end %>
+        <% end %>
       </tr>
     <% end %>
+    <td colspan="8" align="right" >総計　</td><td><%= total_calc_price %>円</td>
+
   </tbody>
 </table>
 
