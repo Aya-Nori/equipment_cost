@@ -14,8 +14,12 @@ class EquipmentsController < ApplicationController
   end
 
   def create
-    Equipment.create(equipment_params)
-    redirect_to '/'
+    @equipment = Equipment.new(equipment_params)
+    if @equipment.save
+      redirect_to equipments_path
+    else
+      render 'new'
+    end
   end
 
   def start_analysis

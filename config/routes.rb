@@ -17,6 +17,4 @@ Rails.application.routes.draw do
       match 'finish_analysis', via: [:get, :post]
     end
   end
-
-  end
-
+end
