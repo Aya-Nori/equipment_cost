@@ -5,11 +5,8 @@
 <div class='list-all'>
   <% count = 0 %>
   <% (@equipments || []).group_by(&:category).each do |category, category_equipments| %>
-    <div>
       <% category_equipments.each do |equipment| %>
         <% latest_start_finish_time = equipment.start_finish_times.order(created_at: :desc).first %>
-        <div>
-          <div>
             <% if latest_start_finish_time && latest_start_finish_time.condition == 1 %>
               <div class='list-nav'>
                 <div class='list-info'>
@@ -20,10 +17,7 @@
                 </div>
               </div>
             <% end %>
-          </div>
-        </div>
       <% end %>
-    </div>
   <% end %>
 
   <% if count == 0 %>
