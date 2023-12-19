@@ -23,14 +23,14 @@
         <% if n.condition == 1 && index + 1 < @start_finish_times.length %>
           <% number += n.condition %> <!-- 正しいカウントを増やす方法 -->
           <td><%= number %></td>
-          <td><%= n.start_time.strftime('%Y年 %m月 %d日') %></td> <!-- 直接strftimeを呼び出し -->
+          <td><%= l n.start_time, format: :long, locale: :ja %></td>
           <td><%= n.user.name_sei %></td>
           <td><%= n.equipment.equipment_name %></td>
-          <% calc_start_time = Time.at(n.start_time).utc.strftime("%H:%M:%S") %>
+          <% calc_start_time = l n.start_time, format: :short, locale: :ja %>
           <td><%= calc_start_time %></td>
 
           <% if @start_finish_times[index + 1].finish_time.present? %>
-            <% calc_finish_time = Time.at(@start_finish_times[index + 1].finish_time).utc.strftime("%H:%M:%S") %>
+            <% calc_finish_time = l @start_finish_times[index + 1].finish_time, format: :short, locale: :ja %>
             <td><%= calc_finish_time %></td>
           <% else %>
             <td></td>
@@ -39,7 +39,7 @@
           <% if @start_finish_times[index + 1].finish_time.present? %>
             <% calc_seconds = (@start_finish_times[index + 1].finish_time - n.start_time).to_i %>
             <% calc_hours = (calc_seconds / 3600.0).ceil %>
-            <% calc_time = Time.at(calc_hours * 3600).utc.strftime("%H") %>
+            <% calc_time = Time.at(calc_hours * 3600).utc.strftime("%k") %>
             <td><%= calc_time %></td>
             <td><%= n.equipment.price %>円</td>
             <% calc_price = calc_hours * n.equipment.price %>
