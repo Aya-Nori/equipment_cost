@@ -1,5 +1,15 @@
+<%# CSS・・・assets/stylesheets/style_list.css %>
+
 <div class="Show__container">
-<h1>分析機器利用　実績表</h1>
+<h1>分析機器利用　実績表　　　【　<%= @selected_division %>　】</h1>
+
+<div class="select_area">
+<%= form_tag(start_finish_times_path, method: 'get', class: 'no-print') do %>
+  <%= select_tag 'selected_division', options_for_select(@divisions, params[:selected_division]), include_blank: true %>
+    左のプルダウンから、表示したい部署名を選択して、下のボタンを教えてください。
+  <%= submit_tag '表示する', class:"rounded-button" %> 
+<% end %>
+</div>
 
 <table border="1">
   <thead>

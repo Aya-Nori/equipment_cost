@@ -1,0 +1,38 @@
+.Show__container{
+  padding: 16px 32px;
+}
+
+@media screen and (min-width:960px){
+  　　* {font-size: 16px; }  
+  }
+
+@media print {
+  /* 印刷時のスタイル */
+  .no-print {
+    display: none;
+  }
+}
+ 
+
+.select_area{
+  background-color: lightgray;
+  padding: 20px;
+  margin-bottom: 30px;
+  color: black;
+  border-radius: 10px; 
+}
+
+.rounded-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: yellow;
+  color: #fff;
+  border-radius: 30px; 
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.rounded-button:hover {
+  background-color: red;
+}
