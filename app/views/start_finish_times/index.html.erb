@@ -1,15 +1,16 @@
 <%# CSS・・・assets/stylesheets/style_list.css %>
 
 <div class="Show__container">
-<h1>分析機器利用　実績表　　　【　<%= @selected_division %>　】</h1>
+<h1>分析機器利用　実績表 <%= @selected_division.present? ? "【 #{h @selected_division} 】" : "" %></h1>
 
 <div class="select_area">
-<%= form_tag(start_finish_times_path, method: 'get', class: 'no-print') do %>
-  <%= select_tag 'selected_division', options_for_select(@divisions, params[:selected_division]), include_blank: true %>
+  <%= form_tag(start_finish_times_path, method: 'get', class: 'no-print') do %>
+    <%= select_tag 'selected_division', options_for_select(@divisions, params[:selected_division]), include_blank: true %>
     左のプルダウンから、表示したい部署名を選択して、下のボタンを教えてください。
-  <%= submit_tag '表示する', class:"rounded-button" %> 
-<% end %>
+    <%= submit_tag '表示する', class: "rounded-button" %>
+  <% end %>
 </div>
+
 
 <table border="1">
   <thead>
@@ -68,11 +69,15 @@
   </tbody>
 </table>
 
-  <!-- 利用料金のデータを抽出 -->
-  <% chart_data = @start_finish_times.map { |n| [l(n.start_time, format: :long, locale: :ja), n.total_calc_price] } %>
+<!-- 利用料金のデータを抽出 -->
+<% chart_data = @start_finish_times.map do |n| %>
+  <% start_time_formatted = n.start_time.present? ? l(n.start_time, format: :long, locale: :ja) : 'N/A' %>
+  <% [start_time_formatted, n.total_calc_price] if n.total_calc_price.present? %> <!-- 追加: total_calc_priceがnilでない場合のみデータを追加 -->
 
-  <!-- 利用料金の折れ線グラフを描画 -->
-  <%= line_chart chart_data, library: { scales: { y: { beginAtZero: true } } }, xtitle: '利用日', ytitle: '利用料金', height: '300px' %>
+<% end.compact %> <!-- 追加: nilを削除 -->
+
+<!-- 利用料金の折れ線グラフを描画 -->
+<%= line_chart chart_data, library: { scales: { y: { beginAtZero: true } } }, xtitle: '利用日', ytitle: '利用料金', height: '300px' %>
 
 
 </div>

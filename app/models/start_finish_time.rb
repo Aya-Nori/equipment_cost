@@ -7,10 +7,21 @@ class StartFinishTime < ApplicationRecord
   belongs_to :equipment
 
   def total_calc_price
-    # ここに計算ロジックを追加する
-    # 例: 仮に利用料金が「usage_fee」というカラムに保存されている場合
-    usage_fee
-  end
+    total_calc_price = 0
 
+    # @start_finish_times が nil の場合はメソッドを実行しない
+    return total_calc_price unless @start_finish_times
+
+    @start_finish_times.each_with_index do |n, index|
+      if @start_finish_times[index + 1].finish_time.present?
+        calc_seconds = (@start_finish_times[index + 1].finish_time - n.start_time).to_i
+        calc_hours = (calc_seconds / 3600.0).ceil
+        calc_price = calc_hours * n.equipment.price
+        total_calc_price += calc_price
+      end
+    end
+
+    return total_calc_price
+  end
 
 end
