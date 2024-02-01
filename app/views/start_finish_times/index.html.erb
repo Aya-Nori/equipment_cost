@@ -68,4 +68,11 @@
   </tbody>
 </table>
 
+  <!-- 利用料金のデータを抽出 -->
+  <% chart_data = @start_finish_times.map { |n| [l(n.start_time, format: :long, locale: :ja), n.total_calc_price] } %>
+
+  <!-- 利用料金の折れ線グラフを描画 -->
+  <%= line_chart chart_data, library: { scales: { y: { beginAtZero: true } } }, xtitle: '利用日', ytitle: '利用料金', height: '300px' %>
+
+
 </div>
