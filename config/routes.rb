@@ -18,11 +18,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :start_finish_times do
-    collection do
-      get 'chart_data'
-    end
-  end
-  
-  
+
 end
