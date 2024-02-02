@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_03_002822) do
     t.integer "user_id", null: false
     t.integer "equipment_id", null: false
     t.integer "used_hour"
+    t.integer "usage_fee"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

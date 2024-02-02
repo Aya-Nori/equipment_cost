@@ -67,8 +67,16 @@ class EquipmentsController < ApplicationController
     .first
 
     if start_finish_time
-      # 終了ボタンが押された時間を記録
-      start_finish_time.update(finish_time: Time.current, condition: 0, user: current_user)
+      # 計算
+      calc_seconds = (Time.current - start_finish_time.start_time).to_i
+      calc_hours = (calc_seconds / 3600.0).ceil
+      calc_time = Time.at(calc_hours * 3600).utc.strftime("%k")
+
+      fee = @equipment.price * calc_hours
+
+    # 終了ボタンが押された時間を記録
+      start_finish_time.update(finish_time: Time.current, condition: 0, user: current_user, used_hour: calc_time, usage_fee: fee)
+
       flash[:success] = '分析を終了しました。'
     else
       flash[:error] = '対応する開始時間が見つかりませんでした。'

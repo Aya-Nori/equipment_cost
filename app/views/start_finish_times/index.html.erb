@@ -17,7 +17,7 @@
     <tr>
       <th>No.</th>
       <th>利用日</th>
-      <th>利用者名</th>
+      <th>利用者</th>
       <th>機器名</th>
       <th>利用開始時間</th>
       <th>利用終了時間</th>
@@ -26,105 +26,30 @@
       <th>利用料金</th>
     </tr>
   </thead>
+  
   <tbody>
-    <% number = 0 %>
-    <% total_calc_price = 0 %>
+    <% total_price = 0 %>
     <% @start_finish_times.each_with_index do |n, index| %>
       <tr>
-        <% if n.condition == 1 && index + 1 < @start_finish_times.length %>
-          <% number += n.condition %> <!-- 正しいカウントを増やす方法 -->
-          <td><%= number %></td>
-          <td><%= l n.start_time, format: :long, locale: :ja %></td>
-          <td><%= n.user.name_sei %></td>
-          <td><%= n.equipment.equipment_name %></td>
-          <% calc_start_time = l n.start_time, format: :short, locale: :ja %>
-          <td><%= calc_start_time %></td>
+        <% if index + 1 < @start_finish_times.length %>
+          <td align="center" ><%= index + 1 %></td>
+          <td align="center" ><%= n.user.name_sei %></td>
+          <td align="center" ><%= n.equipment.equipment_name %></td>
+          <td align="center" ><%= l n.start_time, format: :long, locale: :ja %></td>
+          <td align="center" ><%= n.start_time.strftime("%H:%M") %></td> <!-- 利用開始時間を HH:MM 形式で表示 -->
+          <td align="center" ><%= n.finish_time.strftime("%H:%M") %></td> <!-- 利用開始時間を HH:MM 形式で表示 -->
+          <td align="center" ><%= n.used_hour %>時間</td>
+          <td align="center" ><%= n.equipment.price %>円</td>
+          <td align="right" ><%= n.usage_fee %>円</td>
 
-          <% if @start_finish_times[index + 1].finish_time.present? %>
-            <% calc_finish_time = l @start_finish_times[index + 1].finish_time, format: :short, locale: :ja %>
-            <td><%= calc_finish_time %></td>
-          <% else %>
-            <td></td>
-          <% end %>
+          <% total_price += n.usage_fee %>
 
-          <% if @start_finish_times[index + 1].finish_time.present? %>
-            <% calc_seconds = (@start_finish_times[index + 1].finish_time - n.start_time).to_i %>
-            <% calc_hours = (calc_seconds / 3600.0).ceil %>
-            <% calc_time = Time.at(calc_hours * 3600).utc.strftime("%k") %>
-            <td><%= calc_time %></td>
-            <td><%= n.equipment.price %>円</td>
-            <% calc_price = calc_hours * n.equipment.price %>
-            <td><%= calc_price %>円</td>
-            <% total_calc_price += calc_price %>
-          <% else %>
-            <td></td>
-            <td></td>
-            <td></td>
-          <% end %>
         <% end %>
       </tr>
     <% end %>
-    <td colspan="8" align="right" >総計　</td><td><%= total_calc_price %>円</td>
 
-  </tbody>
-</table>
-
-</div>
-
-
-
-
-
-
-<table border="1">
-  <thead>
-    <tr>
-      <th>No.</th>
-      <th>利用日</th>
-      <th>利用開始時間</th>
-      <th>利用終了時間</th>
-      <th>利用時間</th>
-      <th>機器単価</th>
-      <th>利用料金</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% number = 0 %>
-    <% total_calc_price = 0 %>
-    <% @start_finish_times.each_with_index do |n, index| %>
-      <tr>
-        <% if n.condition == 1 && index + 1 < @start_finish_times.length %>
-          <% number += n.condition %> <!-- 正しいカウントを増やす方法 -->
-          <td><%= number %></td>
-          <td><%= l n.start_time, format: :long, locale: :ja %></td>
-          <% calc_start_time = l n.start_time, format: :short, locale: :ja %>
-          <td><%= calc_start_time %></td>
-
-          <% if @start_finish_times[index + 1].finish_time.present? %>
-            <% calc_finish_time = l @start_finish_times[index + 1].finish_time, format: :short, locale: :ja %>
-            <td><%= calc_finish_time %></td>
-          <% else %>
-            <td></td>
-          <% end %>
-
-          <% if @start_finish_times[index + 1].finish_time.present? %>
-            <% calc_seconds = (@start_finish_times[index + 1].finish_time - n.start_time).to_i %>
-            <% calc_hours = (calc_seconds / 3600.0).ceil %>
-            <% calc_time = Time.at(calc_hours * 3600).utc.strftime("%k") %>
-            <td><%= calc_time %></td>
-            <td><%= n.equipment.price %>円</td>
-            <% calc_price = calc_hours * n.equipment.price %>
-            <td><%= calc_price %>円</td>
-            <% total_calc_price += calc_price %>
-          <% else %>
-            <td></td>
-            <td></td>
-            <td></td>
-          <% end %>
-        <% end %>
-      </tr>
-    <% end %>
-    <td colspan="8" align="right" >総計　</td><td><%= total_calc_price %>円</td>
-
+    <td colspan="8" align="right" >総計　</td
+    ><td><%= total_price %>円</td>
+    
   </tbody>
 </table>

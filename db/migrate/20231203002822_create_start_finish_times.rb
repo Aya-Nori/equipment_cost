@@ -7,6 +7,7 @@ class CreateStartFinishTimes < ActiveRecord::Migration[7.0]
       t.integer :user_id, null: false
       t.integer :equipment_id, null: false
       t.integer :used_hour
+      t.integer :usage_fee
       t.timestamps
     end
   end
