@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     member do
       match 'start_analysis', via: [:get, :post]
       match 'finish_analysis', via: [:get, :post]
+      match 'start_finish_analysis', via: [:get, :post]
     end
     collection do
       get 'all_list'
@@ -17,6 +18,5 @@ Rails.application.routes.draw do
       match 'finish_analysis', via: [:get, :post]
     end
   end
-
 
 end

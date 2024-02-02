@@ -69,5 +69,62 @@
   </tbody>
 </table>
 
-
 </div>
+
+
+
+
+
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>利用日</th>
+      <th>利用開始時間</th>
+      <th>利用終了時間</th>
+      <th>利用時間</th>
+      <th>機器単価</th>
+      <th>利用料金</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% number = 0 %>
+    <% total_calc_price = 0 %>
+    <% @start_finish_times.each_with_index do |n, index| %>
+      <tr>
+        <% if n.condition == 1 && index + 1 < @start_finish_times.length %>
+          <% number += n.condition %> <!-- 正しいカウントを増やす方法 -->
+          <td><%= number %></td>
+          <td><%= l n.start_time, format: :long, locale: :ja %></td>
+          <% calc_start_time = l n.start_time, format: :short, locale: :ja %>
+          <td><%= calc_start_time %></td>
+
+          <% if @start_finish_times[index + 1].finish_time.present? %>
+            <% calc_finish_time = l @start_finish_times[index + 1].finish_time, format: :short, locale: :ja %>
+            <td><%= calc_finish_time %></td>
+          <% else %>
+            <td></td>
+          <% end %>
+
+          <% if @start_finish_times[index + 1].finish_time.present? %>
+            <% calc_seconds = (@start_finish_times[index + 1].finish_time - n.start_time).to_i %>
+            <% calc_hours = (calc_seconds / 3600.0).ceil %>
+            <% calc_time = Time.at(calc_hours * 3600).utc.strftime("%k") %>
+            <td><%= calc_time %></td>
+            <td><%= n.equipment.price %>円</td>
+            <% calc_price = calc_hours * n.equipment.price %>
+            <td><%= calc_price %>円</td>
+            <% total_calc_price += calc_price %>
+          <% else %>
+            <td></td>
+            <td></td>
+            <td></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+    <td colspan="8" align="right" >総計　</td><td><%= total_calc_price %>円</td>
+
+  </tbody>
+</table>

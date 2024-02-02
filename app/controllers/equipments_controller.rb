@@ -57,6 +57,26 @@ class EquipmentsController < ApplicationController
   end
 
 
+  def start_finish_analysis
+    @equipment = Equipment.find(params[:id])
+    
+    # 開始時間が存在し、かつ終了時間が存在しない行で、user_idがcurrent userと同じ、equipment_idがshow.html.erbのequipmentと同じである行を取得
+    start_finish_time = @equipment.start_finish_times
+    .where.not(start_time: nil, finish_time: nil, user_id: current_user.id, equipment_id: @equipment.id)
+    .order(created_at: :desc)
+    .first
+
+    if start_finish_time
+      # 終了ボタンが押された時間を記録
+      start_finish_time.update(finish_time: Time.current, condition: 0, user: current_user)
+      flash[:success] = '分析を終了しました。'
+    else
+      flash[:error] = '対応する開始時間が見つかりませんでした。'
+    end
+  
+    redirect_to @equipment
+  end
+
   private
   def equipment_params
     params.require(:equipment).permit(:equipment_name, :category, :price)
