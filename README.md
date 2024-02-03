@@ -33,14 +33,14 @@ equipment_cost
 
 # URL
 
-リンク先(https://equipmentcost.onrender.com/)
+リンク先(https://equipment2.onrender.com/)
 
 # テスト用アカウント
 
 - Basic認証パスワード：ayabe
 - Basic認証ID：39485
-- メールアドレス：
-- パスワード：
+- メールアドレス：testa@test.com
+- パスワード：123aaa
 
 # 利用方法
 ## 機器使用を記録する
@@ -91,10 +91,10 @@ equipment_cost
 # ローカルでの動作方法
 
 - 以下のコマンドを順に実行する。
-- % git clone https://github.com/Aya-Nori/equipment_cost
+- % git clone https://github.com/Aya-Nori/equipment_2
 - % cd equipment_cost
 - % bundle install
-- % yarn install
+
 
 
 # 工夫したポイント
