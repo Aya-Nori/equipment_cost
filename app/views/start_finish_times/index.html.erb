@@ -12,12 +12,13 @@
 </div>
 
 
+
 <table border="1">
   <thead>
     <tr>
       <th>No.</th>
       <th>利用日</th>
-      <th>利用者</th>
+      <th>利用者名</th>
       <th>機器名</th>
       <th>利用開始時間</th>
       <th>利用終了時間</th>
@@ -36,8 +37,8 @@
           <td align="center" ><%= n.user.name_sei %></td>
           <td align="center" ><%= n.equipment.equipment_name %></td>
           <td align="center" ><%= l n.start_time, format: :long, locale: :ja %></td>
-          <td align="center" ><%= n.start_time.strftime("%H:%M") %></td> <!-- 利用開始時間を HH:MM 形式で表示 -->
-          <td align="center" ><%= n.finish_time.strftime("%H:%M") %></td> <!-- 利用開始時間を HH:MM 形式で表示 -->
+          <td align="center" ><%= n.start_time.strftime("%H:%M") %></td> <!-- 利用開始時間を 時：分 形式で表示 -->
+          <td align="center" ><%= n.finish_time.strftime("%H:%M") %></td> <!-- 利用開始時間を 時：分 形式で表示 -->
           <td align="center" ><%= n.used_hour %>時間</td>
           <td align="center" ><%= n.equipment.price %>円</td>
           <td align="right" ><%= n.usage_fee %>円</td>
