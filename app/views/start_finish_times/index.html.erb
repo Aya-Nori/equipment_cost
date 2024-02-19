@@ -12,13 +12,12 @@
 </div>
 
 
-
 <table border="1">
   <thead>
     <tr>
       <th>No.</th>
       <th>利用日</th>
-      <th>利用者名</th>
+      <th>利用者</th>
       <th>機器名</th>
       <th>利用開始時間</th>
       <th>利用終了時間</th>
@@ -30,27 +29,174 @@
   
   <tbody>
     <% total_price = 0 %>
-    <% @start_finish_times.each_with_index do |n, index| %>
-      <tr>
-        <% if index + 1 < @start_finish_times.length %>
-          <td align="center" ><%= index + 1 %></td>
-          <td align="center" ><%= n.user.name_sei %></td>
-          <td align="center" ><%= n.equipment.equipment_name %></td>
-          <td align="center" ><%= l n.start_time, format: :long, locale: :ja %></td>
-          <td align="center" ><%= n.start_time.strftime("%H:%M") %></td> <!-- 利用開始時間を 時：分 形式で表示 -->
-          <td align="center" ><%= n.finish_time.strftime("%H:%M") %></td> <!-- 利用開始時間を 時：分 形式で表示 -->
-          <td align="center" ><%= n.used_hour %>時間</td>
-          <td align="center" ><%= n.equipment.price %>円</td>
-          <td align="right" ><%= n.usage_fee %>円</td>
+<% @start_finish_times.each_with_index do |n, index| %>
+  <tr>
+    <td align="center" ><%= index + 1 %></td>
+    <td align="center" ><%= n.user.name_sei %></td>
+    <td align="center" ><%= n.equipment.equipment_name %></td>
+    <td align="center" ><%= l n.start_time, format: :long, locale: :ja %></td>
+    <td align="center" ><%= n.start_time.strftime("%H:%M") %></td> <!-- 利用開始時間を HH:MM 形式で表示 -->
+    <td align="center" ><%= n.finish_time.strftime("%H:%M") %></td> <!-- 利用開始時間を HH:MM 形式で表示 -->
+    <td align="center" ><%= n.used_hour %>時間</td>
+    <td align="center" ><%= n.equipment.price %>円</td>
+    <td align="right" ><%= n.usage_fee %>円</td>
 
-          <% total_price += n.usage_fee %>
+    <% total_price += n.usage_fee %>
+  </tr>
+<% end %>
 
-        <% end %>
-      </tr>
-    <% end %>
 
     <td colspan="8" align="right" >総計　</td
     ><td><%= total_price %>円</td>
     
   </tbody>
 </table>
+
+
+
+      <br>
+      <br>
+      <br>
+
+
+<table border="1">
+  <thead>
+    <tr>
+      <th></th>
+      <th>第1四半期（1-3月）</th>
+      <th>第2四半期（4-6月）</th>
+      <th>第3四半期（7-9月）</th>
+      <th>第4四半期（10-12月）</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% first_year = @start_finish_times.first.start_time.year %>
+    <% last_year = @start_finish_times.last.start_time.year %>
+    <% range_year = last_year - first_year + 1 %>
+    <% range_year.times do |i| %>
+      <tr>
+        <td><%= first_year + i %>年</td>
+        <% 4.times do |j| %>
+          <% total_price = 0 %>
+          <td>
+            <% @start_finish_times.each_with_index do |n, index| %>
+              <% if (n.start_time.year == first_year + i) && (n.start_time.month >= 1 + 3 * j && n.start_time.month <= 3 + 3 * j) %>
+                <% total_price += n.usage_fee %>
+              <% end %>
+            <% end %>
+            <%= total_price %>円
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+      <br>
+      <br>
+      <br>
+
+
+<div style="background-color: white;">
+  <div class="chart-container">
+    <canvas id="quarterlyChart"></canvas>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+<script>
+  // テーブルからデータを抽出
+  var table = document.getElementsByTagName('table')[1];
+  var data = [];
+  var labels = ['第1四半期（1-3月）', '第2四半期（4-6月）', '第3四半期（7-9月）', '第4四半期（10-12月）'];
+
+  for (var i = 1; i < table.rows.length; i++) {
+    var row = table.rows[i];
+    var rowData = [];
+
+    for (var j = 1; j < row.cells.length; j++) {
+      rowData.push(parseInt(row.cells[j].innerHTML)); // セルの値を数値に変換して追加
+    }
+
+    data.push(rowData);
+  }
+
+// グラフを描画
+var ctx = document.getElementById('quarterlyChart').getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [{
+      label: '2022年度',
+      data: data[0], // 第一四半期のデータを指定
+      borderColor: 'rgb(75, 192, 192)',
+      backgroundColor: 'rgba(75, 192, 192, 0.2)', // グラフの塗りつぶし色を設定
+      pointBackgroundColor: 'rgb(75, 192, 192)', // マーカーの塗りつぶし色を設定
+      pointStyle: 'circle', // マーカースタイルを円形に設定
+      radius: 6, // マーカーのサイズを大きくする
+      borderWidth: 3, // マーカー間の線の太さを設定
+      tension: 0.1
+    }, {
+      label: '2023年度',
+      data: data[1], // 第二四半期のデータを指定
+      borderColor: 'rgb(255, 159, 64)',
+      backgroundColor: 'rgba(255, 159, 64, 0.2)', // グラフの塗りつぶし色を設定
+      pointBackgroundColor: 'rgb(255, 159, 64)', // マーカーの塗りつぶし色を設定
+      pointStyle: 'circle', // マーカースタイルを円形に設定
+      radius: 6, // マーカーのサイズを大きくする
+      borderWidth: 3, // マーカー間の線の太さを設定
+      tension: 0.1
+    }, {
+      label: '2024年度',
+      data: data[2], // 第三四半期のデータを指定
+      borderColor: 'rgb(54, 162, 235)',
+      backgroundColor: 'rgba(54, 162, 235, 0.2)', // グラフの塗りつぶし色を設定
+      pointBackgroundColor: 'rgb(54, 162, 235)', // マーカーの塗りつぶし色を設定
+      pointStyle: 'circle', // マーカースタイルを円形に設定
+      radius: 6, // マーカーのサイズを大きくする
+      borderWidth: 3, // マーカー間の線の太さを設定
+      tension: 0.1
+    }]
+  },
+  options: {
+    plugins: {
+      title: {
+        display: true,
+        text: '分析機器利用　実績結果グラフ <%= @selected_division.present? ? "【 #{h @selected_division} 】" : "" %>',
+        position: 'top',
+        font: {
+          size: 18,
+          weight: 'bold',
+          color: 'black' // テキストの色を黒色に設定
+        }
+      }
+    },
+      scales: {
+        x: {
+          grid: {
+            color: 'black' // x軸のグリッド線の色を黒色に設定
+          },
+          ticks: {
+            color: 'black' // x軸のラベルの色を黒色に設定
+          }
+        },
+        y: {
+          grid: {
+            color: 'black' // y軸のグリッド線の色を黒色に設定
+          },
+          ticks: {
+            color: 'black' // y軸のラベルの色を黒色に設定
+          }
+        }
+      }
+    }
+  });
+
+
+
+  // グラフ全体のスタイルを変更
+  Chart.defaults.color = 'black'; // データセットの色
+  Chart.defaults.font.color = 'black'; // 文字色
+</script>
+
