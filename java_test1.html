@@ -123,6 +123,54 @@ class Main {
 
 ArrayList の使用にはライブラリのインポートが必要
 
+手順
+① ライブラリをインポートする
+import java.util.ArrayList;
+
+② ArrayListの宣言を行う
+ArrayList<データ型> scores = new ArrayList<データ型>();
+  例/ArrayList<Integer> scores = new ArrayList<Integer>();
+  ① 整数（Integer）を格納するArrayListを「scores」という名称で宣言
+  ② ArrayListの要素を作成
+  別表記
+  ArrayList<Integer> scores = new ArrayList<>();
+
+③ ArrayListに値を代入する
+add(要素として追加する値)
+addメソッドを使用すると、要素はArrayListの末尾に追加
+
+④ ArrayListから要素を取り出す
+get(取得したい要素のインデックス）
+
+
+
+条件分岐
+
+class Main {
+  public static vvoid main(String[] args) {
+    int value = 3;
+    if (value > 0){
+      System.out.println("値は正です");
+    }
+  }
+}
+
+
+if文
+if ( 条件式 ) {
+  条件式を満たす時に実行する処理
+}
+
+・条件式を（）で囲む必要があること
+・行いたい処理を{}で囲む必要があること
+
+if (条件A) { 
+  // 処理A
+} else if () {
+  // 処理B
+} else {
+  // 処理C
+}
 
 
 
