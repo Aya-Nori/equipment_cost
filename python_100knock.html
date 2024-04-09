@@ -2,19 +2,52 @@
 
 <!--
 
+///   knock1   ///   データ読み込み
+
+import os
+from google.colab import drive
+drive.mount('/content/drive')
+
+import pandas as pd
+customer_master = pd.read_csv('/content/drive/My Drive/100knock/customer_master.csv')
+customer_master.head()
+
+item_master = pd.read_csv('/content/drive/My Drive/100knock/item_master.csv')
+item_master.head()
+
+transaction_1 = pd.read_csv('/content/drive/My Drive/100knock/transaction_1.csv')
+transaction_1.head()
+
+transaction_detail_1 = pd.read_csv('/content/drive/My Drive/100knock/transaction_detail_1.csv')
+transaction_detail_1.head()
+
+/// /// /// /// ///
 
 
-  
+///   knock2   ///   データ結合 縦方向
+
+transaction_2 = pd.read_csv('/content/drive/My Drive/100knock/transaction_2.csv')
+transaction = pd.concat([transaction_1, transaction_2], ignore_index = True)
+transaction.head()
+
+結合結果の確認  結合数があっているかどうか
+print(len(transaction_1))
+print(len(transaction_2))
+print(len(transaction))
+
+transaction_detail_2 = pd.read_csv('/content/drive/My Drive/100knock/transaction_detail_2.csv')
+transaction_detail = pd.concat([transaction_detail_1, transaction_detail_2], ignore_index = True)
+transaction_detail.head()
+
+結合結果の確認  結合数があっているかどうか
+print(len(transaction_detail_1))
+print(len(transaction_detail_2))
+print(len(transaction_detail))
+
+/// /// /// /// ///
 
 
-
-
-
-
-
-
-
-
+///   knock3   ///   データ結合 横方向
 
 
 
