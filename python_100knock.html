@@ -24,7 +24,7 @@ transaction_detail_1.head()
 /// /// /// /// ///
 
 
-///   knock2   ///   データ結合 縦方向
+///   knock2   ///   データ結合 縦方向結合
 
 transaction_2 = pd.read_csv('/content/drive/My Drive/100knock/transaction_2.csv')
 transaction = pd.concat([transaction_1, transaction_2], ignore_index = True)
@@ -47,9 +47,130 @@ print(len(transaction_detail))
 /// /// /// /// ///
 
 
-///   knock3   ///   データ結合 横方向
+///   knock3   ///   データ結合 横方向結合
+
+join_data = pd.merge(transaction_detail, transaction[["transaction_id", "payment_date", "customer_id"]], on = "transaction_id", how = "left")
+join_data.head()
+
+結合結果の確認  結合数があっているかどうか
+print(len(transaction_detail))
+print(len(transaction))
+print(len(join_data))
+
+/// /// /// /// ///
 
 
+///   knock4   ///   マスターデータ結合 横方向結合
+
+join_data = pd.merge(join_data, customer_master, on = "customer_id", how = "left")
+join_data = pd.merge(join_data, item_master, on = "item_id", how = "left")
+join_data.head()
+
+/// /// /// /// ///
+
+
+///   knock5   ///   データ列 作成、加工
+
+join_data["price"] = join_data["quantity"] * join_data["item_price"]
+join_data[["quantity", "item_price", "price"]].head()
+
+
+/// /// /// /// ///
+
+
+///   knock6   ///   検算
+
+print(join_data["price"].sum())
+print(transaction["price"].sum())
+
+両辺が同じなら true が返される
+join_data["price"].sum() == transaction["price"].sum()
+
+/// /// /// /// ///
+
+
+///   knock7   ///   統計量
+
+欠損値の確認
+isnull() で欠損があるとTrue となる、Sum()でTrue合計数を出力
+join_data.isnull().sum()
+
+統計量
+describe() で出力
+データ数、四分位数、中央値、最大値
+join_data.describe()
+
+データ期間
+print(join_data["payment_date"].min())
+print(join_data["payment_date"].max())
+
+/// /// /// /// ///
+
+
+
+///   knock8   ///   データ型確認、変更
+join_data.dtypes
+
+join_data["payment_date"] = pd.to_datetime(join_data["payment_date"])
+join_data["payment_month"] = join_data["payment_date"].dt.strftime("%Y%m")
+join_data[["payment_date", "payment_month"]].head()
+
+変換
+join_data["payment_date"] = pd.to_datetime(join_data["payment_date"])
+
+新たな列での読み込み
+join_data["payment_month"] = join_data["payment_date"].dt.strftime("%Y%m")
+
+月別の集計 テキストとは異なる
+join_data.groupby("payment_month")["price"].sum()
+
+/// /// /// /// ///
+
+
+
+///   knock9   ///   月別、商品別 一覧表
+
+join_data.groupby(["payment_month", "item_name"])[["price", "quantity"]].sum()
+
+
+ピボットテーブル表示
+values 集計したい数値列
+aggfunc 集計方法指定 ここではsum
+pd.pivot_table(join_data, index = 'item_name', columns = 'payment_month', values = ['price', 'quantity'], aggfunc = 'sum')
+
+/// /// /// /// ///
+
+
+
+///   knock10   ///   グラフ表示
+
+ピボットテーブルの表示変更
+graph_data = pd.pivot_table(join_data, index = 'payment_month', columns = 'item_name', values ='price', aggfunc = 'sum')
+graph_data.head()
+
+グラフ表示
+import matplotlib.pyplot as plt
+%matplotlib inline
+plt.plot(list(graph_data.index), graph_data["PC-A"], label = 'PC-A')
+plt.plot(list(graph_data.index), graph_data["PC-B"], label = 'PC-B')
+plt.plot(list(graph_data.index), graph_data["PC-C"], label = 'PC-C')
+plt.plot(list(graph_data.index), graph_data["PC-D"], label = 'PC-D')
+plt.plot(list(graph_data.index), graph_data["PC-E"], label = 'PC-E')
+plt.legend()
+
+
+グラフ表示用ライブラリ読み込み
+import matplotlib.pyplot as plt
+
+表示
+%matplotlib inline
+
+商品ごとのグラフ表示
+plt.plot(list(graph_data.index), graph_data["PC-A"], label = 'PC-A')
+...
+
+凡例表示
+plt.legend()
 
 
 -->
