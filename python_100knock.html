@@ -173,4 +173,17 @@ plt.plot(list(graph_data.index), graph_data["PC-A"], label = 'PC-A')
 plt.legend()
 
 
+
+
+///   knock11   ///  
+
+import os
+from google.colab import drive
+drive.mount('/content/drive')
+
+import pandas as pd
+uriage_data = pd.read_csv('/content/drive/My Drive/100knock/uriage.csv')
+uriage_data.head()
+
+
 -->
