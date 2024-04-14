@@ -99,4 +99,54 @@ print(len(pd.unique(uriage_data["item_name"])))
 
 
 
+///   knock15   ///   欠損値
+
+uriage_data.isnull().any(axis = 0)
+isnull()で欠損値の有無を把握
+
+
+flg_is_null = uriage_data["item_price"].isnull()
+for trg in list(uriage_data.loc[flg_is_null, "item_name"].unique()):
+  price = uriage_data.loc[(~flg_is_null) & (uriage_data["item_name"] == trg), "item_price"].max()
+  uriage_data.loc[(flg_is_null) & (uriage_data["item_name"] == trg), "item_price"] = price
+uriage_data.head()
+
+欠損部の確認
+flg_is_null = uriage_data["item_price"].isnull()
+
+ループ処理
+list() 変数をリスト形式に変換
+uriage_data.loc[flg_is_null, "item_name"] .loc関数条件に合致するデータを抽出
+flg_is_null が欠損している行の item_name 列を抽出
+unique() 抽出した商品名の重複をなくす
+: 以降にループ処理
+欠損値がある商品名 を用いて、同じ商品で金額が正しく記載されている行を .loc で探し、金額を取得
+~flg_is_null 否定演算子 flg_is_null == False と同義
+for trg in list(uriage_data.loc[flg_is_null, "item_name"].unique()):
+  price = uriage_data.loc[(~flg_is_null) & (uriage_data["item_name"] == trg), "item_price"].max()
+
+取得した金額でデータを補完  
+売上履歴の item_price 列に対して .loc を行い、欠損を起こしている対象データを抽出し、 price を代入
+  uriage_data.loc[(flg_is_null) & (uriage_data["item_name"] == trg), "item_price"] = price
+uriage_data.head()
+
+欠損値がないことを確認
+uriage_data.isnull().any(axis = 0)
+
+各商品の金額が正しく補完されたか確認
+for trg in list(uriage_data["item_name"].sort_values().unique()):
+  print(trg + "の最大値：" + str(uriage_data.loc[uriage_data["item_name"] == 
+  trg] ["item_price"].max()) + "の最小値：" + str(uriage_data.loc[uriage_data
+  ["item_name"] == trg]["item_price"].min(skipna = False)))
+
+全ての商品についてループ処理
+for trg in list(uriage_data["item_name"].sort_values().unique()):
+
+ループ処理内で、各商品の金額の最大値と最小値を出力
+最大値と最小値が同じであれば、金額はどれも同じ
+skipna = False NaNデータ を無視するかの設定、NaNがある場合、最小値は NaN と表示される
+
+/// /// /// /// ///
+
+
 -->
