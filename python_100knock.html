@@ -175,15 +175,26 @@ plt.legend()
 
 
 
-///   knock11   ///  
+///   knock11   ///  データ読み込み、データ確認
 
 import os
 from google.colab import drive
 drive.mount('/content/drive')
 
+データの確認 データの揺れ
 import pandas as pd
 uriage_data = pd.read_csv('/content/drive/My Drive/100knock/uriage.csv')
 uriage_data.head()
+
+kokyaku_data = pd.read_excel("/content/drive/My Drive/100knock/kokyaku_daicho.xlsx")
+kokyaku_data.head()
+
+
+
+
+
+
+
 
 
 -->

@@ -1,0 +1,45 @@
+<!-- python 100本ノック 学習用のファイル -->
+
+<!--
+
+///   knock11   ///  データ読み込み、データ確認
+
+import os
+from google.colab import drive
+drive.mount('/content/drive')
+
+データの確認 データの揺れの確認
+フォーマット、表記の一致を確認する
+
+import pandas as pd
+uriage_data = pd.read_csv('/content/drive/My Drive/100knock/uriage.csv')
+uriage_data.head()
+
+kokyaku_data = pd.read_excel("/content/drive/My Drive/100knock/kokyaku_daicho.xlsx")
+kokyaku_data.head()
+
+
+/// /// /// /// ///
+
+
+
+///   knock12   ///   データの揺れ確認
+
+
+データの確認 データの揺れの確認
+フォーマット、表記の一致を確認する
+
+uriage_data["item_name"].head()
+
+uriage_data["item_price"].head()
+
+/// /// /// /// ///
+
+
+
+///   knock13   ///   グラフ表示
+
+
+
+
+-->
