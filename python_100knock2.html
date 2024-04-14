@@ -164,11 +164,43 @@ kokyaku_data["顧客名"].head()
 /// /// /// /// ///
 
 
-///   knock17   ///   顧客名のゆれ補正、統一
+///   knock17   ///   日付のゆれ補正、統一
+
+数値表示数の抽出
+flg_is_serial = kokyaku_data["登録日"].astype("str").str.isdigit()
+flg_is_serial.sum()
+
+fromSerial = pd.to_timedelta(kokyaku_data.loc[flg_is_serial, "登録日"].astype("float") - 2, unit = "D") + pd.to_datetime('1900/1/1')
+fromSerial
 
 
+数値を日付に変換する
+pd.to_timedelta() 関数
+astype("float") - 2 Excelとpythonの日付シリアル差の修正のための-2
 
+日付書式の統一 スラッシュ区切りをハイフン区切りにする
+fromString = pd.to_datetime(kokyaku_data.loc[~flg_is_serial, "登録日"])
+fromString
 
+数値→日付データとスラッシュ→ハイフンデータの統合
+concat 関数を使用
+kokyaku_data["登録日"] = pd.concat([fromSerial, fromString])
+kokyaku_data
 
+登録日から登録月を算出し、集計
+groupby()の後、count()でデータ数集計
+kokyaku_data["登録年月"] = kokyaku_data["登録日"].dt.strftime("%Y%m")
+rslt = kokyaku_data.groupby("登録年月").count()["顧客名"]
+print(rslt)
+print(len(kokyaku_data))
+
+検証として総データ数の出力
+print(len(kokyaku_data))
+
+数値データがないことを最初と同じコードで確認する
+flg_is_serial = kokyaku_data["登録日"].astype("str").str.isdigit()
+flg_is_serial.sum()
+
+/// /// /// /// ///
 
 -->
