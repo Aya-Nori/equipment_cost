@@ -37,7 +37,34 @@ uriage_data["item_price"].head()
 
 
 
-///   knock13   ///   グラフ表示
+///   knock13   ///   仮集計
+
+uriage_data["purchase_date"] = pd.to_datetime(uriage_data["purchase_date"])
+uriage_data["purchase_month"] = uriage_data["purchase_date"].dt.strftime("%Y%m")
+res = uriage_data.pivot_table(index = "purchase_month", columns = "item_name", aggfunc = "size", fill_value = 0)
+res
+
+売上履歴から商品ごとの月別売り上げ合計を集計
+日付型の変換
+uriage_data["purchase_date"] = pd.to_datetime(uriage_data["purchase_date"])
+uriage_data["purchase_month"] = uriage_data["purchase_date"].dt.strftime("%Y%m")
+
+縦軸：購入年月、横軸：商品件数
+res = uriage_data.pivot_table(index = "purchase_month", columns = "item_name", aggfunc = "size", fill_value = 0)
+
+集計結果表示
+res
+
+7 rows × 99 columns　という表示から、26columsよりも多く、色んな表記があって統一できていないことがわかる
+
+/// /// /// /// ///
+
+
+
+///   knock14   ///   データ揺れ補正
+
+
+
 
 
 
