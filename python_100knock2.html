@@ -203,4 +203,32 @@ flg_is_serial.sum()
 
 /// /// /// /// ///
 
+
+///   knock18   ///   データ結合 顧客名をキーにデータ結合
+
+join_data = pd.merge(uriage_data, kokyaku_data, left_on = "customer_name", right_on = "顧客名", how = "left")
+join_data = join_data.drop("customer_name", axis = 1)
+join_data
+
+
+uriage_data データフレームの "customer_name" 列と kokyaku_data データフレームの "顧客名" 列をキーとして、
+左外部結合（left join）を行っています。つまり、uriage_data のすべての行を保持しながら、kokyaku_data の該当する行がある場合には、その行も結合されます。
+
+左外部結合を指定しているので、uriage_data の行が基準となり、kokyaku_data の該当する行があれば結合されます。
+もし該当する行がない場合、結合後のデータフレームには NaN が含まれることになります。
+join_data = pd.merge(uriage_data, kokyaku_data, left_on = "customer_name", right_on = "顧客名", how = "left")
+
+結合方法
+how = "left"
+
+/// /// /// /// ///
+
+
+
+
+
+
+
+
+
 -->
