@@ -235,6 +235,35 @@ join_dataから必要な列を抽出し、任意に並び替えた
 csv形式でのファイル出力
 dump_data.to_csv("dump_data.csc", index = False)
 
+
+/// /// /// /// ///
+
+
+///   knock20   /// データ集計
+
+ダンプファイル読み込み、表示
+import_data = pd.read_csv("/content/drive/My Drive/100knock/dump_data.csv")
+import_data
+
+ピボットテーブル、
+byItem = import_data.pivot_table(index = "purchase_month", columns = "item_name", aggfunc = "size", fill_value = 0)
+byItem
+
+byPrice = import_data.pivot_table(index = "purchase_month", columns = "item_name", values = "item_price", aggfunc = "sum", fill_value = 0)
+byPrice
+
+byCustomer = import_data.pivot_table(index = "purchase_month", columns = "顧客名", aggfunc = "size", fill_value = 0)
+byCustomer
+
+byRegion = import_data.pivot_table(index = "purchase_month", columns = "地域", aggfunc = "size", fill_value = 0)
+byRegion
+
+
+集計期間内で未購入者の確認
+away_data = pd.merge(uriage_data, kokyaku_data, left_on = "customer_name", right_on = "顧客名", how = "right")
+away_data[away_data["purchase_date"].isnull()][["顧客名", "メールアドレス", "登録日"]]
+
+
 /// /// /// /// ///
 
 
