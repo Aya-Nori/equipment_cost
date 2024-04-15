@@ -224,6 +224,20 @@ how = "left"
 /// /// /// /// ///
 
 
+///   knock19   /// ダンプ（ファイル出力）
+
+join_dataから必要な列を抽出し、任意に並び替えた
+dump_data = join_data[["purchase_date", "purchase_month", "item_name", "item_price", "顧客名", "かな", "地域", "メールアドレス", "登録日"]]
+dump_data
+
+join_dataから必要な列を抽出し、任意に並び替えた
+
+csv形式でのファイル出力
+dump_data.to_csv("dump_data.csc", index = False)
+
+/// /// /// /// ///
+
+
 
 
 
