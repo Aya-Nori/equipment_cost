@@ -47,5 +47,35 @@ customer_join.isnull().sum()
 /// /// /// /// ///
 
 
+///   knock23   ///  データ集計
+
+customer_join.groupby("class_name").count()["customer_id"]
+customer_join.groupby("campaign_name").count()["customer_id"]
+customer_join.groupby("gender").count()["customer_id"]
+customer_join.groupby("is_deleted").count()["customer_id"]
+
+集計
+groupby()
+customer_id ごとにカウントする
+is_deleted 在籍者0　退会者1
+
+
+customer_join["start_date"] = pd.to_datetime(customer_join["start_date"])
+customer_start = customer_join.loc[customer_join["start_date"] > pd.to_datetime("20180401")]
+print(len(customer_start))
+
+入会人数の確認
+start_date列に記載されているユーザーが入会者。
+実行すると、1361　が出力される。
+
+/// /// /// /// ///
+
+
+///   knock24   ///  データ集計
+
+
+
+
+
 
 -->
