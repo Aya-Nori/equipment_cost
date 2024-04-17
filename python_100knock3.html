@@ -71,7 +71,22 @@ start_date列に記載されているユーザーが入会者。
 /// /// /// /// ///
 
 
-///   knock24   ///  データ集計
+///   knock24   ///  データ基礎集計
+
+customer_join["end_date"] = pd.to_datetime(customer_join["end_date"])
+customer_newer = customer_join.loc[(customer_join["end_date"] >= pd.to_datetime("20190331"))|(customer_join["end_date"].isna())]
+print(len(customer_newer))
+customer_newer["end_date"].unique()
+
+NaT datetime型の欠損値を意味する。このデータでは退会していない顧客を意味する
+
+データ詳細の確認
+customer_newer.groupby("class_name").count()["customer_id"]
+customer_newer.groupby("campaign_name").count()["customer_id"]
+customer_newer.groupby("gender").count()["customer_id"]
+
+/// /// /// /// ///
+
 
 
 
