@@ -154,6 +154,24 @@ uselog_weekday["routine_flg"] = uselog_weekday["routine_flg"].where(uselog_weekd
 
 ///   knock27   ///  顧客データと利用履歴データの結合
 
+customer_join = pd.merge(customer_join, uselog_customer, on = "customer_id", how = "left")
+customer_join = pd.merge(customer_join, uselog_weekday[["customer_id", "routine_flg"]], on = "customer_id", how = "left")
+customer_join.head()
+
+knock25/26のデータを結合
+customer_id をキーにして結合、方法はleft結合
+
+customer_join.isnull().sum()
+
+欠損値の確認
+customer_join.isnull().sum()
+end_date以外は0
+
+
+/// /// /// /// ///
+
+
+
 
 
 -->
