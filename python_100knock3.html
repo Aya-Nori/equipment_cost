@@ -226,6 +226,21 @@ hist() ヒストグラム表示
 
 
 
+///   knock30   ///  比較
+
+customer_end = customer_join.loc[customer_join["is_deleted"] == 1]
+customer_end.describe()
+退会者について
+
+customer_stay = customer_join.loc[customer_join["is_deleted"] == 0]
+customer_stay.describe()
+継続者について
+
+customer_join.to_csv("customer_join.csv", index = False)
+csvファイル出力
+
+
+/// /// /// /// ///
 
 
 
