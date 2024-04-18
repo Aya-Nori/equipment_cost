@@ -121,10 +121,38 @@ groupbyによりindexにcustomer_id列があるため、indexを修正
 /// /// /// /// ///
 
 
-///   knock26   ///  定期利用
+///   knock26   ///  定期利用確認 顧客/月/曜日での集計
+
+uselog["weekday"] = uselog["usedate"].dt.weekday
+uselog_weekday = uselog.groupby(["customer_id", "年月", "weekday"], as_index = False).count()[["customer_id", "年月", "weekday", "log_id"]]
+uselog_weekday.rename(columns = {"log_id":"count"}, inplace = True)
+uselog_weekday.head()
+
+曜日計算 0-6(0:月-6:日)
+uselog["weekday"] = uselog["usedate"].dt.weekday
+
+顧客、年月、曜日ごとのlog_idを集計
+uselog_weekday = uselog.groupby(["customer_id", "年月", "weekday"], as_index = False).count()[["customer_id", "年月", "weekday", "log_id"]]
+uselog_weekday.rename(columns = {"log_id":"count"}, inplace = True)
 
 
+uselog_weekday = uselog_weekday.groupby("customer_id", as_index = False).max()[["customer_id", "count"]]
+uselog_weekday["routine_flg"] = 0
+uselog_weekday["routine_flg"] = uselog_weekday["routine_flg"].where(uselog_weekday["count"] < 4, 1)
+uselog_weekday.head()
 
+顧客単位での集計、最大値集計
+uselog_weekday = uselog_weekday.groupby("customer_id", as_index = False).max()[["customer_id", "count"]]
+
+最大値が4，5の場合、特定の曜日に通ったとして1を表示
+uselog_weekday["routine_flg"] = 0
+uselog_weekday["routine_flg"] = uselog_weekday["routine_flg"].where(uselog_weekday["count"] < 4, 1)
+
+
+/// /// /// /// ///
+
+
+///   knock27   ///  顧客データと利用履歴データの結合
 
 
 
