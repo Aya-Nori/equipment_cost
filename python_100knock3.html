@@ -171,6 +171,42 @@ end_date以外は0
 /// /// /// /// ///
 
 
+///   knock28   ///  会員期間計算
+
+from dateutil.relativedelta import relativedelta
+customer_join["calc_date"] = customer_join["end_date"]
+customer_join["calc_date"] = customer_join["calc_date"].fillna(pd.to_datetime("20190430"))
+customer_join["membership_period"] = 0
+for i in range(len(customer_join)):
+  delta = relativedelta(customer_join["calc_date"].iloc[i], customer_join["start_date"].iloc[i])
+  customer_join.loc[i, "membership_period"] = delta.years * 12 + delta.months
+customer_join.head()
+
+
+日付比較のためのライブラリrelativedelta インポート
+from dateutil.relativedelta import relativedelta
+
+日付計算用の列作成
+customer_join["calc_date"] = customer_join["end_date"]
+
+現在の加入者は退会日が空欄のため、欠損値を代入
+customer_join["calc_date"] = customer_join["calc_date"].fillna(pd.to_datetime("20190430"))
+
+会員期間を月単位で算出
+customer_join["membership_period"] = 0
+for i in range(len(customer_join)):
+  delta = relativedelta(customer_join["calc_date"].iloc[i], customer_join["start_date"].iloc[i])
+  customer_join.loc[i, "membership_period"] = delta.years * 12 + delta.months
+
+出力
+customer_join.head()
+
+
+/// /// /// /// ///
+
+
+
+
 
 
 
