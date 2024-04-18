@@ -206,6 +206,25 @@ customer_join.head()
 
 
 
+///   knock29   ///  顧客行動の統計量
+
+customer_join[["mean", "median", "max", "min"]].describe()
+describeによる表示
+
+customer_join.groupby("routine_flg").count()["customer_id"]
+routine_flg = 1 は定期利用
+
+import matplotlib.pyplot as plt
+%matplotlib inline
+plt.hist(customer_join["membership_period"])
+グラフ表示
+
+hist() ヒストグラム表示
+
+
+/// /// /// /// ///
+
+
 
 
 
