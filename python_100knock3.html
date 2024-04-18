@@ -88,6 +88,41 @@ customer_newer.groupby("gender").count()["customer_id"]
 /// /// /// /// ///
 
 
+///   knock25   ///  利用履歴集計
+
+uselog["usedate"] = pd.to_datetime(uselog["usedate"])
+uselog["年月"] = uselog["usedate"].dt.strftime("%Y%m")
+uselog_months = uselog.groupby(["年月", "customer_id"], as_index = False).count()
+uselog_months.rename(columns = {"log_id":"count"}, inplace = True)
+del uselog_months["usedate"]
+uselog_months.head()
+
+年月でデータを作成
+uselog["usedate"] = pd.to_datetime(uselog["usedate"])
+uselog["年月"] = uselog["usedate"].dt.strftime("%Y%m")
+
+年月と顧客データでgroupbyによる集計
+uselog_months = uselog.groupby(["年月", "customer_id"], as_index = False).count()
+uselog_months.rename(columns = {"log_id":"count"}, inplace = True)
+
+利用日は不要なため削除
+del uselog_months["usedate"]
+
+
+uselog_customer = uselog_months.groupby("customer_id").agg(["mean", "median", "max", "min"])["count"]
+uselog_customer = uselog_customer.reset_index(drop = False)
+uselog_customer.head()
+
+顧客ごとの絞り込み
+顧客ごとの月内利用回数集計
+groupbyによりindexにcustomer_id列があるため、indexを修正
+
+
+/// /// /// /// ///
+
+
+///   knock26   ///  定期利用
+
 
 
 
