@@ -61,6 +61,24 @@ customer_clustering = customer_clustering.assign(cluster = clusters.labels_)
 /// /// /// /// ///
 
 
+///   knock33   ///  クラスタ結果
+
+customer_clustering.columns = ["月内平均値", "月内中央値", "月内最大値", "月内最小値", "会員期間", "cluster"]
+customer_clustering.groupby("cluster").count()
+
+列名の変更
+customer_clustering.columns = ["月内平均値", "月内中央値", "月内最大値", "月内最小値", "会員期間", "cluster"]
+
+列をクラスタごとに集計
+customer_clustering.groupby("cluster").count()
+
+グループごとの平均
+customer_clustering.groupby("cluster").mean()
+
+
+/// /// /// /// ///
+
+
 
 
 
