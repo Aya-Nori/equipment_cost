@@ -125,6 +125,24 @@ for i in customer_clustering["cluster"].unique():
 
 
 
+///   knock35   ///  退会者の傾向把握
+
+customer_clustering = pd.concat([customer_clustering, customer], axis = 1)
+customer_clustering.groupby(["cluster", "is_deleted"], as_index = False).count()[["cluster", "is_deleted", "customer_id"]]
+
+データ結合
+customer_clustering = pd.concat([customer_clustering, customer], axis = 1)
+
+各クラスタでの集計
+customer_clustering.groupby(["cluster", "is_deleted"], as_index = False).count()[["cluster", "is_deleted", "customer_id"]]
+
+定期利用の確認
+customer_clustering.groupby(["cluster", "routine_flg"], as_index = False).count()[["cluster", "routine_flg", "customer_id"]]
+
+
+
+/// /// /// /// ///
+
 
 
 -->
