@@ -79,6 +79,50 @@ customer_clustering.groupby("cluster").mean()
 /// /// /// /// ///
 
 
+///   knock34   /// グラフ表示
+
+from sklearn.decomposition import PCA
+X = customer_clustering_sc
+pca = PCA(n_components = 2)
+pca.fit(X)
+x_pca = pca.transform(X)
+pca_df = pd.DataFrame(x_pca)
+pca_df["cluster"] = customer_clustering["cluster"]
+
+主成分分析
+ライブラリ導入
+from sklearn.decomposition import PCA
+
+モデル定義
+pca = PCA(n_components = 2)
+
+主成分分析実施
+pca.fit(X)
+x_pca = pca.transform(X)
+
+pca_df：二次元に削減したデータを格納
+
+
+import matplotlib.pyplot as plt
+%matplotlib inline
+for i in customer_clustering["cluster"].unique():
+  tmp = pca_df.loc[pca_df["cluster"] == i]
+  plt.scatter(tmp[0], tmp[1])
+
+ライブラリ導入
+import matplotlib.pyplot as plt
+
+グラフ表示
+%matplotlib inline
+
+散布図にプロット
+for i in customer_clustering["cluster"].unique():
+  tmp = pca_df.loc[pca_df["cluster"] == i]
+  plt.scatter(tmp[0], tmp[1])
+
+
+/// /// /// /// ///
+
 
 
 
