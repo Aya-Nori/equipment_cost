@@ -21,8 +21,44 @@ customer.isnull().sum()
 /// /// /// /// ///
 
 
+///   knock32   ///  クラスタリング、データのグループ化
 
 
+customer_clustering = customer[["mean", "median", "max", "min", "membership_period"]]
+customer_clustering.head()
+顧客データグループ化のため、変数絞り込み
+
+
+
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+customer_clustering_sc = sc.fit_transform(customer_clustering)
+
+kmeans = KMeans(n_clusters = 4, random_state = 0)
+clusters = kmeans.fit(customer_clustering_sc)
+customer_clustering = customer_clustering.assign(cluster = clusters.labels_)
+
+print(customer_clustering["cluster"].unique())
+customer_clustering.head()
+
+K-means法、標準化のためのscikit-learnライブラリ導入
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+
+標準化実行、新たに格納
+sc = StandardScaler()
+customer_clustering_sc = sc.fit_transform(customer_clustering)
+
+K-meansのモデル構築、クラスタ数＝4とし、モデル定義
+kmeans = KMeans(n_clusters = 4, random_state = 0)
+clusters = kmeans.fit(customer_clustering_sc)
+customer_clustering = customer_clustering.assign(cluster = clusters.labels_)
+
+0-3の4グループが作成された
+
+
+/// /// /// /// ///
 
 
 
