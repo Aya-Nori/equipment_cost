@@ -241,6 +241,16 @@ print(model.score(X_test, y_test))
 /// /// /// /// ///
 
 
+///   knock39   ///  変数確認
+
+coef = pd.DataFrame({"feature_names":X.columns, "coefficient":model.coef_})
+coef
+
+説明変数ごとに寄与している変数の係数を出力する
+出力された数字が大きいほど、寄与が大きい
+
+
+/// /// /// /// ///
 
 
 
