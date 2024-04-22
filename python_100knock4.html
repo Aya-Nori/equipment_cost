@@ -168,6 +168,7 @@ for i in range(6, len(year_months)):
 predict_data.head()
 
 
+欠損値の除去
 predict_data = predict_data.dropna()
 predict_data = predict_data.reset_index(drop = True)
 predict_data.head()
@@ -177,6 +178,29 @@ predict_data.head()
 
 
 
+///   knock37   ///  変数付与
+
+predict_data = pd.merge(predict_data, customer[["customer_id", "start_date"]], on = "customer_id", how = "left")
+predict_data.head()
+会員期間を得るため、入会日をリストに追加した
+
+
+predict_data["now_date"] = pd.to_datetime(predict_data["年月"], format="%Y%m")
+predict_data["start_date"] = pd.to_datetime(predict_data["start_date"])
+from dateutil.relativedelta import relativedelta
+predict_data["period"] = None
+for i in range(len(predict_data)):
+    delta = relativedelta(predict_data.loc[i, "now_date"].to_pydatetime(), predict_data.loc[i, "start_date"].to_pydatetime())
+    predict_data.loc[i, "period"] = delta.years * 12 + delta.months
+predict_data.head()
+日数計算
+
+以下、テキストと異なるため、注意
+    delta = relativedelta(predict_data.loc[i, "now_date"].to_pydatetime(), predict_data.loc[i, "start_date"].to_pydatetime())
+
+
+
+/// /// /// /// ///
 
 
 -->
