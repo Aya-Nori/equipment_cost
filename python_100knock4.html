@@ -203,7 +203,7 @@ predict_data.head()
 
 
 
-///   knock37   ///  変予測モデル作成
+///   knock38   ///  変予測モデル作成
 
 predict_data = predict_data.loc[predict_data["start_date"] >= pd.to_datetime("20180401")]
 from sklearn import linear_model
@@ -239,6 +239,10 @@ print(model.score(X_test, y_test))
 
 
 /// /// /// /// ///
+
+
+
+
 
 
 
