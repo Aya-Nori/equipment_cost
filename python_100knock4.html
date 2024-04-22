@@ -254,6 +254,32 @@ coef
 
 
 
+///   knock40   ///  利用回数予測
+
+x1 = [3, 4, 4, 6, 8, 7, 8]
+x2 = [2, 2, 3, 3, 4, 6, 8]
+x_pred = pd.DataFrame(data = [x1, x2], columns = ["count_0", "count_1", "count_2", "count_3", "count_4", "count_5", "period"])
+
+2人の顧客データを作成して推定する
+6か月前から各月の出席回数を配列で指定
+x1 = [3, 4, 4, 6, 8, 7, 8]
+x2 = [2, 2, 3, 3, 4, 6, 8]
+
+翌月の来店回数を予測する
+
+
+model.predict(x_pred)
+model() で予測変換
+出力結果はarray()で出る
+
+
+uselog_months.to_csv("use_log_months.csv", index = False)
+データcsv出力
+
+
+/// /// /// /// ///
+
+
 
 
 -->
