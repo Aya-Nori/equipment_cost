@@ -31,8 +31,33 @@ uselog.head()
 /// /// /// /// ///
 
 
-///   knock42   ///  
+///   knock42   ///  退会者、退会前月のデータ
 
+from dateutil.relativedelta import relativedelta
+exit_customer = customer.loc[customer["is_deleted"] == 1].copy()
+exit_customer["exit_date"] = None
+exit_customer["end_date"] = pd.to_datetime(exit_customer["end_date"])
+for i in exit_customer.index:
+  exit_customer.loc[i, "exit_date"] = exit_customer.loc[i, "end_date"] - relativedelta(months = 1)
+exit_customer["exit_date"] = pd.to_datetime(exit_customer["exit_date"])
+exit_customer["年月"] = exit_customer["exit_date"].dt.strftime("%Y%m")
+uselog["年月"] = uselog["年月"].astype(str)
+exit_uselog = pd.merge(uselog, exit_customer, on = ["customer_id", "年月"], how = "left")
+print(len(uselog))
+exit_uselog.head()
+
+退会者に絞り込み
+退会付きの一か月前の年月を取得
+結合
+
+
+
+exit_uselog = exit_uselog.dropna(subset = ["name"])
+print(len(exit_uselog))
+print(len(exit_uselog["customer_id"].unique()))
+exit_uselog.head()
+
+欠損値除去
 
 /// /// /// /// ///
 
