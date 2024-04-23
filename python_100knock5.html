@@ -63,7 +63,7 @@ exit_uselog.head()
 
 
 
-///   knock42   ///  継続客のデータ
+///   knock43   ///  継続客のデータ
 
 conti_customer = customer.loc[customer["is_deleted"] == 0]
 conti_uselog = pd.merge(uselog, conti_customer, on = ["customer_id"], how = "left")
