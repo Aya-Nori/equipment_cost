@@ -109,8 +109,20 @@ predict_data.head()
 
 
 
+///   knock44   ///  予測する月の在籍期間確認
 
+predict_data["period"] = 0
+predict_data["now_date"] = pd.to_datetime(predict_data["年月"], format = "%Y%m")
+predict_data["start_date"] = pd.to_datetime(predict_data["start_date"])
+for i in range(len(predict_data)):
+  delta = relativedelta(predict_data.loc[i, "now_date"], predict_data.loc[i, "start_date"])
+  predict_data.loc[i, "period"] = int(delta.years * 12 + delta.months)
+predict_data.head()
 
+在籍期間列の追加
+在籍期間は年月とstart_date列の差から算出
+
+/// /// /// /// ///
 
 
 -->
