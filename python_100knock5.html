@@ -63,5 +63,54 @@ exit_uselog.head()
 
 
 
+///   knock42   ///  継続客のデータ
+
+conti_customer = customer.loc[customer["is_deleted"] == 0]
+conti_uselog = pd.merge(uselog, conti_customer, on = ["customer_id"], how = "left")
+print(len(conti_uselog))
+conti_uselog = conti_uselog.dropna(subset = ["name"])
+print(len(conti_uselog))
+
+継続客だけを抽出、結合
+conti_customer = customer.loc[customer["is_deleted"] == 0]
+conti_uselog = pd.merge(uselog, conti_customer, on = ["customer_id"], how = "left")
+
+データ数確認
+print(len(conti_uselog))
+
+name列欠損データを削除
+conti_uselog = conti_uselog.dropna(subset = ["name"])
+
+削除後のデータ数確認
+print(len(conti_uselog))
+
+conti_uselog = conti_uselog.sample(frac = 1, random_state = 0).reset_index(drop = True)
+conti_uselog = conti_uselog.drop_duplicates(subset = "customer_id")
+print(len(conti_uselog))
+conti_uselog.head()
+
+退会者データ数に比べて継続者データ数は多いので、数を近づける
+データをシャッフル
+conti_uselog = conti_uselog.sample(frac = 1, random_state = 0).reset_index(drop = True)
+
+重複を削除
+conti_uselog = conti_uselog.drop_duplicates(subset = "customer_id")
+print(len(conti_uselog))
+conti_uselog.head()
+
+
+predict_data = pd.concat([conti_uselog, exit_uselog], ignore_index = True)
+print(len(predict_data))
+predict_data.head()
+継続客データと退会者データを縦に結合
+
+
+/// /// /// /// ///
+
+
+
+
+
+
 
 -->
