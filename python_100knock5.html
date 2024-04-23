@@ -125,4 +125,22 @@ predict_data.head()
 /// /// /// /// ///
 
 
+///   knock45   ///  欠損値除去
+
+predict_data.isna().sum()
+欠損値があると機械学習はできない
+欠損値を確認
+数字が0ではないものが欠損値
+
+predict_data = predict_data.dropna(subset = ["count_1"])
+predict_data.isna().sum()
+
+dropna は subset で指定した列を除外できる
+
+/// /// /// /// ///
+
+
+
+
+
 -->
