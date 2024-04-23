@@ -141,6 +141,31 @@ dropna は subset で指定した列を除外できる
 
 
 
+///   knock46   ///  カテゴリカル変数
+
+target_col = ["campaign_name", "class_name", "gender", "count_1", "routine_flg", "period", "is_deleted"]
+predict_data = predict_data[target_col]
+predict_data.head()
+
+
+ダミー変数
+predict_data = pd.get_dummies(predict_data)
+predict_data.head()
+
+
+不要列削除
+del predict_data["campaign_name_通常"]
+del predict_data["class_name_ナイト"]
+del predict_data["gender_M"]
+predict_data.head()
+
+/// /// /// /// ///
+
+
+
+
+
+
 
 
 -->
