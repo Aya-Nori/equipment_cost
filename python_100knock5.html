@@ -162,8 +162,47 @@ predict_data.head()
 /// /// /// /// ///
 
 
+///   knock47   ///  退会予測モデル作成 決定木
+
+from sklearn.tree import DecisionTreeClassifier
+import sklearn.model_selection
+exit = predict_data.loc[predict_data["is_deleted"] == 1]
+conti = predict_data.loc[predict_data["is_deleted"] == 0].sample(len(exit), random_state = 0)
+X = pd.concat([exit, conti], ignore_index = True)
+y = X["is_deleted"]
+del X["is_deleted"]
+X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, random_state = 0)
+model = DecisionTreeClassifier(random_state = 0)
+model.fit(X_train, y_train)
+y_test_pred = model.predict(X_test)
+print(y_test_pred)
+
+ライブラリ導入
+from sklearn.tree import DecisionTreeClassifier
+import sklearn.model_selection
+
+退会者と継続者のデータ数を合わせる
+exit = predict_data.loc[predict_data["is_deleted"] == 1]
+conti = predict_data.loc[predict_data["is_deleted"] == 0].sample(len(exit), random_state = 0)
+
+学習データと評価データの分割
+X = pd.concat([exit, conti], ignore_index = True)
+y = X["is_deleted"]
+del X["is_deleted"]
+X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, random_state = 0)
+
+モデル定義、評価データの予測、出力
+model = DecisionTreeClassifier(random_state = 0)
+model.fit(X_train, y_train)
+y_test_pred = model.predict(X_test)
+print(y_test_pred)
 
 
+result_test = pd.DataFrame({"y_test":y_test, "y_pred":y_test_pred})
+result_test.head()
+実測値と予測値の比較
+
+/// /// /// /// ///
 
 
 
