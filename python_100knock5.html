@@ -251,4 +251,32 @@ print(model.score(X_train, y_train))
 /// /// /// /// ///
 
 
+///   knock49   ///  各変数の寄与
+
+importance = pd.DataFrame({"feature_names":X.columns, "coefficient":model.feature_importances_})
+importance
+
+変数取得関数
+model.feature_importances_
+
+決定木の可視化
+!pip install japanize_matplotlib
+from sklearn import tree
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+%matplotlib inline
+plt.figure(figsize = (20, 8))
+tree.plot_tree(model, feature_names = X.columns, fontsize = 8)
+
+日本語化
+!pip install japanize_matplotlib
+
+決定木の可視化
+tree.plot_tree(model, feature_names = X.columns, fontsize = 8)
+
+/// /// /// /// ///
+
+
+
+
 -->
