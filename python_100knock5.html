@@ -198,13 +198,57 @@ y_test_pred = model.predict(X_test)
 print(y_test_pred)
 
 
-result_test = pd.DataFrame({"y_test":y_test, "y_pred":y_test_pred})
-result_test.head()
+results_test = pd.DataFrame({"y_test":y_test, "y_pred":y_test_pred})
+results_test.head()
 実測値と予測値の比較
 
 /// /// /// /// ///
 
 
+
+///   knock48   ///  予測モデル評価
+
+correct = len(results_test.loc[results_test["y_test"] == results_test["y_pred"]])
+data_count = len(results_test)
+score_test = correct / data_count
+print(score_test)
+
+実測値と予測値が同じデータを確認、カウント
+correct = len(results_test.loc[results_test["y_test"] == results_test["y_pred"]])
+data_count = len(results_test)
+
+正答率
+score_test = correct / data_count
+print(score_test)
+
+print(model.score(X_test, y_test))
+print(model.score(X_train, y_train))
+関数での正答率算出
+
+評価データの正答率
+print(model.score(X_test, y_test))
+
+学習データの正答率
+print(model.score(X_train, y_train))
+
+学習データの精度＞評価データの精度
+→ 学習データに適合しすぎている → 過学習の傾向
+
+
+X = pd.concat([exit, conti], ignore_index = True)
+y = X["is_deleted"]
+del X["is_deleted"]
+X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, random_state = 0)
+model = DecisionTreeClassifier(random_state = 0, max_depth = 5)
+model.fit(X_train, y_train)
+print(model.score(X_test, y_test))
+print(model.score(X_train, y_train))
+
+決定木の深さを浅くしモデルの簡易化を実施
+学習データ評価データの差が小さくなった
+
+
+/// /// /// /// ///
 
 
 -->
