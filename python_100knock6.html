@@ -1,0 +1,85 @@
+<!-- python 100本ノック 学習用のファイル -->
+
+<!--
+
+import os
+from google.colab import drive
+drive.mount('/content/drive')
+
+///   knock51   ///  データ読み込み、整形
+
+import pandas as pd
+factories = pd.read_csv("/content/drive/My Drive/100knock/tbl_factory.csv", index_col = 0)
+factories
+
+warehouses = pd.read_csv("/content/drive/My Drive/100knock/tbl_warehouse.csv", index_col = 0)
+warehouses
+
+cost = pd.read_csv("/content/drive/My Drive/100knock/rel_cost.csv", index_col = 0)
+cost.head()
+
+trans = pd.read_csv("/content/drive/My Drive/100knock/tbl_transaction.csv", index_col = 0)
+trans.head()
+
+join_data = pd.merge(trans, cost, left_on = ["ToFC", "FromWH"], right_on = ["FCID", "WHID"], how = "left")
+join_data.head()
+
+join_data = pd.merge(join_data, factories, left_on = "ToFC", right_on = "FCID", how = "left")
+join_data.head()
+
+
+
+
+
+
+/// /// /// /// ///
+
+
+///   knock42   ///  退会者、退会前月のデータ
+
+
+/// /// /// /// ///
+
+
+
+///   knock43   ///  継続客のデータ
+
+
+/// /// /// /// ///
+
+
+
+///   knock44   ///  予測する月の在籍期間確認
+
+/// /// /// /// ///
+
+
+
+///   knock46   ///  カテゴリカル変数
+
+/// /// /// /// ///
+
+
+///   knock47   ///  退会予測モデル作成 決定木
+
+/// /// /// /// ///
+
+
+
+///   knock48   ///  予測モデル評価
+
+/// /// /// /// ///
+
+
+///   knock49   ///  各変数の寄与
+
+/// /// /// /// ///
+
+
+
+///   knock50   ///  
+
+/// /// /// /// ///
+
+
+-->
