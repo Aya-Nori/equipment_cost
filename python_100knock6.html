@@ -11,32 +11,68 @@ drive.mount('/content/drive')
 import pandas as pd
 factories = pd.read_csv("/content/drive/My Drive/100knock/tbl_factory.csv", index_col = 0)
 factories
+# 工場データの読み込み
 
 warehouses = pd.read_csv("/content/drive/My Drive/100knock/tbl_warehouse.csv", index_col = 0)
 warehouses
+# 倉庫データの読み込み
 
 cost = pd.read_csv("/content/drive/My Drive/100knock/rel_cost.csv", index_col = 0)
 cost.head()
+# コストテーブル
 
 trans = pd.read_csv("/content/drive/My Drive/100knock/tbl_transaction.csv", index_col = 0)
 trans.head()
+# 輸送トランザクションテーブル
 
 join_data = pd.merge(trans, cost, left_on = ["ToFC", "FromWH"], right_on = ["FCID", "WHID"], how = "left")
 join_data.head()
+# トランザクションテーブルに各テーブルをジョインする
+# コストデータを付与
 
 join_data = pd.merge(join_data, factories, left_on = "ToFC", right_on = "FCID", how = "left")
 join_data.head()
+# 工場情報を付与
 
+join_data = pd.merge(join_data, warehouses, left_on = "FromWH", right_on = "WHID", how = "left")
+join_data = join_data[["TransactionDate", "Quantity", "Cost", "ToFC", "FCName", "FCDemand", "FromWH", "WHName", "WHSupply", "WHRegion"]]
+join_data.head()
+# 倉庫情報を付与
+# カラムの並び替え
 
+kanto = join_data.loc[join_data["WHRegion"] == "関東"]
+kanto.head()
+# 関東データ抽出
 
-
+tohoku = join_data.loc[join_data["WHRegion"] == "東北"]
+tohoku.head()
+# 東北データ抽出
 
 
 /// /// /// /// ///
 
 
-///   knock42   ///  退会者、退会前月のデータ
+///   knock52   ///  現状の輸送量、コスト確認
 
+print("関東支社の総コスト: " + str(kanto["Cost"].sum()) + "万円")
+print("東北支社の総コスト: " + str(tohoku["Cost"].sum()) + "万円")
+# 支社のコスト合計算出
+
+print("関東支社の総部品輸送個数: " + str(kanto["Quantity"].sum()) + "個")
+print("東北支社の総部品輸送個数: " + str(tohoku["Quantity"].sum()) + "個")
+# 支社の輸送個数算出
+
+tmp = (kanto["Cost"].sum() / kanto["Quantity"].sum()) * 10000
+print("関東支社の部品1つ当たりの輸送コスト: " + str(int(tmp)) + "円")
+tmp = (tohoku["Cost"].sum() / tohoku["Quantity"].sum()) * 10000
+print("東北支社の部品1つ当たりの輸送コスト: " + str(int(tmp)) + "円")
+# 部品1つ当たりの輸送コスト算出
+
+cost_chk = pd.merge(cost, factories, on = "FCID", how = "left")
+print("関東支社の平均輸送コスト: " + str(cost_chk["Cost"].loc[cost_chk["FCRegion"] == "関東"].mean()) + "万円")
+print("東北支社の平均輸送コスト: " + str(cost_chk["Cost"].loc[cost_chk["FCRegion"] == "東北"].mean()) + "万円")
+# コストテーブルを支社ごとに集計
+# 平均コスト算出
 
 /// /// /// /// ///
 
