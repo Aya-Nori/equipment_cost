@@ -111,8 +111,38 @@ plt.show()
 /// /// /// /// ///
 
 
+///   knock54   ///  ネットワークにノード追加
 
-///   knock44   ///  予測する月の在籍期間確認
+import networkx as nx
+import matplotlib.pyplot as plt
+
+# グラフオブジェクトの作成
+G = nx.Graph()
+
+# 頂点の設定
+G.add_node("nodeA")
+G.add_node("nodeB")
+G.add_node("nodeC")
+G.add_node("nodeD")
+
+# 辺の設定
+G.add_edge("nodeA", "nodeB")
+G.add_edge("nodeA", "nodeC")
+G.add_edge("nodeB", "nodeC")
+G.add_edge("nodeA", "nodeD")
+
+# 座標の設定
+pos = {}
+pos["nodeA"] = (0, 0)
+pos["nodeB"] = (1, 1)
+pos["nodeC"] = (0, 1)
+pos["nodeD"] = (1, 0)
+
+# 描画
+nx.draw(G, pos, with_labels = True)
+
+# 表示
+plt.show()
 
 /// /// /// /// ///
 
