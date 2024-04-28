@@ -272,7 +272,38 @@ print("総輸送コスト："+str(trans_cost(df_tr, df_tc)))
 /// /// /// /// ///
 
 
-///   knock49   ///  各変数の寄与
+///   knock59   ///  制約条件の作成
+
+# データ読み込み
+df_tr = pd.read_csv("/content/drive/My Drive/100knock/trans_route.csv", index_col = "工場")
+df_demand = pd.read_csv("/content/drive/My Drive/100knock/demand.csv")
+df_supply = pd.read_csv("/content/drive/My Drive/100knock/supply.csv")
+
+# 需要側の制約条件
+for i in range(len(df_demand.columns)):
+  temp_sum = sum(df_tr[df_demand.columns[i]])
+  print(str(df_demand.columns[i]) + "への輸送量：" + str(temp_sum) + "（需要量：" + str(df_demand.iloc[0][1]) + "）")
+  if temp_sum >= df_demand.iloc[0][1]:
+    print("需要量を満たしています。")
+  else:
+    print("需要量を満たしていません。輸送ルートを再計算してください。")
+
+# 供給側の制約条件
+for i in range(len(df_supply.columns)):
+  temp_sum = sum(df_tr.loc[df_supply.columns[i]])
+  print(str(df_supply.columns[i]) + "からの輸送量：" + str(temp_sum) + "（供給限界：" + str(df_supply.iloc[0][1]) + "）")
+  if temp_sum <= df_supply.iloc[0][1]:
+    print("供給限界の範囲内です。")
+  else:
+    print("供給限界を超過しています。輸送ルートを再計算してください。")
+
+制約条件1
+各工場で生産される製品が需要を満たすかどうか
+→　各工場に納入される部品数、各工場に対する需要数　の比較
+
+制約条件2
+各工場に出荷される部品数が供給限界を超えるかどうか
+→　各倉庫から出荷される部品数、各倉庫の供給限界　の比較
 
 /// /// /// /// ///
 
