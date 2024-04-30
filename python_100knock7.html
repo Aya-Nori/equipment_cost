@@ -165,8 +165,19 @@ print(df_plan)
 /// /// /// /// ///
 
 
+///   knock65   ///  利益計算の関数
 
-///   knock55   ///  ルートの重み付け
+# 利益計算関数
+def product_plan(df_profit, df_plan):
+  profit = 0
+  for i in range(len(df_profit.index)):
+    for j in range(len(df_plan.columns)):
+      profit += df_profit.iloc[i][j] * df_plan.iloc[i][j]
+  return profit
+
+print("総利益：" + str(product_plan(df_profit, df_plan)))
+
+目的関数と制約条件を定義し、制約条件下で目的関数を最小にする変数の組み合わせを探す
 
 /// /// /// /// ///
 
