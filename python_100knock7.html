@@ -275,7 +275,14 @@ print(tbdi2)
 /// /// /// /// ///
 
 
-///   knock59   ///  制約条件の作成
+///   knock69   ///  最適ネットワークにおける輸送コストとその内訳を計算する
+
+print(tbdi2)
+trans_cost = 0
+for i in range(len(tbdi2.index)):
+  trans_cost += tbdi2["輸送費"].iloc[i] * tbdi2["ValX"].iloc[i]
+print("総輸送コスト：" + str(trans_cost))
+
 
 /// /// /// /// ///
 
