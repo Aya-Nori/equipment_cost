@@ -287,8 +287,13 @@ print("総輸送コスト：" + str(trans_cost))
 /// /// /// /// ///
 
 
+///   knock70   ///  最適ネットワークにおける生産コストとその内訳を計算する
 
-///   knock60   ///  輸送コスト関数の変化の確認
+print(tbfa)
+product_cost = 0
+for i in range(len(tbfa.index)):
+  product_cost += tbfa["生産費"].iloc[i] * tbfa["ValY"].iloc[i]
+print("総輸送コスト：" + str(product_cost))
 
 /// /// /// /// ///
 
