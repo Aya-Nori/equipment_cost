@@ -115,8 +115,15 @@ actibe_node_coloring 伝播したノードを赤色で示す関数
 /// /// /// /// ///
 
 
+///   knock73   ///  伝播の時系列変化をグラフ化
 
-///   knock63   ///  最適化の結果が制約条件内かどうかの確認
+# 時系列変化のグラフ化
+list_timeSeries_num = []
+for i in range(len(list_timeSeries)):
+  list_timeSeries_num.append(sum(list_timeSeries[i]))
+
+plt.plot(list_timeSeries_num)
+plt.show()
 
 /// /// /// /// ///
 
