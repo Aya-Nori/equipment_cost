@@ -1,0 +1,85 @@
+<!-- python 100本ノック 学習用のファイル -->
+
+<!--
+
+import os
+from google.colab import drive
+drive.mount('/content/drive')
+
+///   knock71   ///  ネットワークの可視化
+
+import pandas as pd
+
+df_links = pd.read_csv("/content/drive/My Drive/100knock/links.csv", index_col = "Node")
+df_links.head()
+
+
+import networkx as nx
+import matplotlib.pyplot as plt
+
+# グラフオブジェクトの作成
+G = nx.Graph()
+
+# 頂点の設定
+NUM = len(df_links.index)
+for i in range(NUM):
+  node_no = df_links.columns[i].strip("Node")
+  G.add_node(str(node_no))
+
+# 辺の設定
+for i in range(NUM):
+  for j in range(NUM):
+    node_name = "Node" + str(j)
+    if df_links[node_name].iloc[i] == 1:
+      G.add_edge(str(i), str(j))
+
+# 描画
+nx.draw_networkx(G, node_color = "k", edge_color = "k", font_color = "w")
+plt.show()
+
+ライブラリnetworkx 繋がりの可視化 1:繋がっている、2:繋がっていない
+リンクの多いものを中央に配置するようノード（頂点）位置を決定して可視化
+再現性はない
+
+/// /// /// /// ///
+
+
+///   knock62   ///  輸送ルートをネットワークで確認
+
+/// /// /// /// ///
+
+
+
+///   knock63   ///  最適化の結果が制約条件内かどうかの確認
+
+/// /// /// /// ///
+
+
+///   knock64   ///  生産計画に関するデータの読み込み
+
+/// /// /// /// ///
+
+
+///   knock66   ///  最適化問題を解く
+
+/// /// /// /// ///
+
+
+
+///   knock67   ///  最適生産計画が制約条件内かどうかの確認
+
+/// /// /// /// ///
+
+
+
+///   knock68   ///  ロジスティクスネットワーク設計問題を解く
+
+/// /// /// /// ///
+
+
+///   knock69   ///  最適ネットワークにおける輸送コストとその内訳を計算する
+
+/// /// /// /// ///
+
+
+-->
