@@ -226,8 +226,15 @@ plt.show()
 /// /// /// /// ///
 
 
+///   knock76   ///  データの読み込み
 
-///   knock66   ///  最適化問題を解く
+df_mem_links = pd.read_csv("/content/drive/My Drive/100knock/links_members.csv", index_col = "Node")
+df_mem_info = pd.read_csv("/content/drive/My Drive/100knock/info_members.csv", index_col = "Node")
+df_mem_links.head()
+
+540名のデータ
+links... はSNSの繋がり
+info... は利用状況、1:利用した月、0:利用しなかった月
 
 /// /// /// /// ///
 
