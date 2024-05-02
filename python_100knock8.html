@@ -240,7 +240,15 @@ info... は利用状況、1:利用した月、0:利用しなかった月
 
 
 
-///   knock67   ///  最適生産計画が制約条件内かどうかの確認
+///   knock77   ///  ヒストグラム表示
+
+NUM = len(df_mem_links.index)
+array_linkNum = np.zeros(NUM)
+for i in range(NUM):
+  array_linkNum[i] = sum(df_mem_links["Node" + str(i)])
+
+plt.hist(array_linkNum, bins = 10, range = (0, 250))
+plt.show()
 
 /// /// /// /// ///
 
