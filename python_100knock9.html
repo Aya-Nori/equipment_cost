@@ -73,7 +73,21 @@ HTML(anim.to_jshtml())
 /// /// /// /// ///
 
 
-///   knock73   ///  伝播の時系列変化をグラフ化
+///   knock83   ///  動画の分割、保存
+
+cap = cv2.VideoCapture('/content/drive/My Drive/100knock/mov/mov01.avi')
+num = 0
+count = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+while(cap.isOpened()):
+  ret, frame = cap.read()
+  if ret:
+    filepath = '/content/drive/My Drive/100knock/snapshot/snapshot_' + str(num) + '.jpg'
+    cv2.imwrite(filepath, frame)
+  num = num + 1
+  if num >= count:
+    break
+cap.release()
+cv2.destroyAllWindows()
 
 /// /// /// /// ///
 
