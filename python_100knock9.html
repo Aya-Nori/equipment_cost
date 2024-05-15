@@ -102,7 +102,8 @@ hogParams = {'winStride': (8, 8), 'padding': (32, 32), 'scale': 1.05, 'hitThresh
 # 検出
 img = cv2.imread('/content/drive/My Drive/100knock/img/img01.jpg')
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-1
+human, r = hog.detectMultiScale(gray, **hogParams)
+
 if len(human) > 0:
   for (x, y, w, h) in human:
     cv2.rectangle(img, (x, y), (x + w, y + h), (255, 255, 255), 3)
